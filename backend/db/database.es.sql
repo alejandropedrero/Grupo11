@@ -89,11 +89,11 @@ CREATE TABLE notificaciones (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 )
 
-INSERT INTO usuarios (nombre, apellido, fecha_nacimiento, email, contrasena, ubicacion, foto_perfil)
-VALUES ('David', 'Montero', '1992-10-05', 'Dxworld@gmail.com', 'contraseña123', 'gijon', 'foto.jpg');
+INSERT INTO usuarios (nombre, apellido, fecha_nacimiento, email, contrasena, ubicacion)
+VALUES ('David', 'Montero', '1992-10-05', 'Dxworld@gmail.com', 'password123', 'Gijón');
 
-INSERT INTO usuarios (nombre, apellido, fecha_nacimiento, email, contrasena, ubicacion, foto_perfil)
-VALUES ('Sonia', 'Bueno', 'Fecha de nacimiento', 'Email', 'password123', 'Gijon', 'foto.jpg');
+INSERT INTO usuarios (nombre, apellido, fecha_nacimiento, email, contrasena, ubicacion)
+VALUES ('Sonia', 'Bueno', '1992-10-05', 'bueno.g.sonia@gmail.com', 'password123', 'Gijón');
 
-INSERT INTO usuarios (nombre, apellido, fecha_nacimiento, email, contrasena, ubicacion, foto_perfil)
-VALUES ('Alejandro', 'Pedrero', 'Fechad de naciemito', 'Email', 'clave123', 'Gijon', 'foto.jpg');
+INSERT INTO usuarios (nombre, apellido, fecha_nacimiento, email, contrasena, ubicacion)
+VALUES ('Alejandro', 'Pedrero', '1988-09-29', 'apedrerovega@gmail.com', 'password123', 'Gijón');
