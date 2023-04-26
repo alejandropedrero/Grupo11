@@ -1,4 +1,4 @@
-import express, { json } from "express";
+import express from "express";
 import usersRoutes from "./routes/users.routes.js";
 import indexRoutes from "./routes/index.routes.js";
 import loginRoutes from "./routes/login.routes.js";
