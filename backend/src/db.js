@@ -10,3 +10,13 @@ export const pool = createPool({
   port: 3306,
   database: "tecladb",
 });
+
+(async () => {
+  try {
+    const connection = await pool.getConnection();
+    console.log("Conectado a la base de datos");
+    connection.release();
+  } catch (error) {
+    console.log(error);
+  }
+})();
