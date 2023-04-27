@@ -1,7 +1,9 @@
 import { pool } from "../db.js";
 
 export const getUsers = async (req, res) => {
-  const [rows] = await pool.query("SELECT * FROM users");
+  const [rows] = await pool.query(
+    "SELECT id, name, last_name, email, location FROM users"
+  );
   res.json(rows);
 };
 
