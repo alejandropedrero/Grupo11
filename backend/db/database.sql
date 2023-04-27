@@ -5,23 +5,14 @@ USE tecladb;
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    birthdate DATE NOT NULL,
+    last_name VARCHAR(50),
+    birthdate DATE,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
     location VARCHAR(100),
     profile_picture VARCHAR(100),
     PRIMARY KEY (id)
 );
-
-ALTER TABLE users
-MODIFY COLUMN email VARCHAR(100) NOT NULL,
-MODIFY COLUMN name VARCHAR(50) NOT NULL,
-MODIFY COLUMN password VARCHAR(100) NOT NULL,
-MODIFY COLUMN last_name VARCHAR(50),
-MODIFY COLUMN birthdate DATE,
-MODIFY COLUMN location VARCHAR(100),
-MODIFY COLUMN profile_picture VARCHAR(100);
 
 
 CREATE TABLE friends (

@@ -18,7 +18,7 @@ export const validateRegister = async (req, res) => {
       [name, last_name, email, password]
     );
 
-    res.status(200).send("User created successfully");
+    return res.status(200).redirect("/login");
   } catch (error) {
     console.log(error);
     res.status(500).send("Error creating user");

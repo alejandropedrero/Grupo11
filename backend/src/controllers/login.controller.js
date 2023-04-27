@@ -14,10 +14,10 @@ export const validateLogin = async (req, res) => {
     );
 
     if (rows.length === 0) {
-      return res.status(401).send("Incorrect email or password");
+      return res.status(401).send("<h1>Email o password incorrectos</h1>");
     }
 
-    return res.redirect("/home");
+    return res.redirect("/index");
   } catch (error) {
     console.error(error);
     return res.status(500).send("Error occurred while logging in");
