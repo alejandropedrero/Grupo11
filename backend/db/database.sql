@@ -14,7 +14,6 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
-
 CREATE TABLE friends (
     id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,

@@ -25,9 +25,6 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Variables de entorno
-dotenv.config({ path: "./env/.env" });
-
 app.use(registerRoutes);
 app.use(loginRoutes);
 app.use(indexRoutes);
