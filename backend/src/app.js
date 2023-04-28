@@ -7,6 +7,7 @@ import indexRoutes from "./routes/index.routes.js";
 import loginRoutes from "./routes/login.routes.js";
 import registerRoutes from "./routes/register.routes.js";
 import peopleRoutes from "./routes/people.routes.js";
+import profileRoutes from "./routes/profile.routes.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -30,6 +31,7 @@ app.use(loginRoutes);
 app.use(indexRoutes);
 app.use(usersRoutes);
 app.use(peopleRoutes);
+app.use(profileRoutes);
 
 app.listen(3000);
 
