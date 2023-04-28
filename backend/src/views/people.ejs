@@ -1,0 +1,545 @@
+<!-- APLICAMOS BOOTSTRAP A CAJAS IZQUIERDA Y MEDIA QUERIES AL GRID DE CONTACTOS -->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://tecla.academy/assets/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Teclers | Personas</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/stylesPersonas.css" />
+    <link rel="stylesheet" href="css/stylesOverall.css" />
+  </head>
+  <body class="container">
+    <!-- NUEVA NAVBAR -->
+    <nav
+      class="navbar navbar-nav navbar-expand-lg container rounded-3 my-3 sticky-top"
+      style="background-color: #79c7c7"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="img/logo-teclers-final.svg"
+            alt="Logo Teclers"
+            width="100rem"
+          />
+        </a>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="navbar-collapse collapse"
+          id="navbarSupportedContent"
+          style=""
+        >
+          <form class="d-flex me-auto ms-auto my-2 col-lg-5" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Busca algo..."
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success btn-navbar" type="submit">
+              Buscar
+            </button>
+          </form>
+          <ul class="navbar-nav mb-lg-0 d-block d-lg-flex align-items-center">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                style="color: white"
+                aria-current="page"
+                href="index.html"
+                >Descubrir</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: white" href="personas.html"
+                >Amigos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                style="color: white"
+                href="https://tecla.academy/"
+                target="_blank"
+                >Cursos</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="img/profile-pic.png"
+                  alt="Foto perfil"
+                  width="40rem"
+                />
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="perfil.html">Tu Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="personas.html">Ajustes</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="login.html">Cerrar Sesión</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- CONTENIDO PÁGINA -->
+    <main class="row container m-0 p-0" id="outclick">
+      <div class="col-md-1 col-lg-2 d-none d-md-block p-0">
+        <!-- DIV 1.1 -->
+        <div class="h-20 p-lg-3 mb-3 border rounded-3">
+          <div class="titulos d-none d-lg-block">
+            <h3>Explore</h3>
+          </div>
+          <div class="row">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-brand-youtube col-lg-6 p-0"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#79C7C7"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <rect x="3" y="5" width="18" height="14" rx="4" />
+              <path d="M10 9l5 3l-5 3z" />
+            </svg>
+            <div class="col-6 p-lg-2 d-none d-lg-block">Videos</div>
+          </div>
+          <div class="row">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-code col-lg-6"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#79C7C7"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <polyline points="7 8 3 12 7 16" />
+              <polyline points="17 8 21 12 17 16" />
+              <line x1="14" y1="4" x2="10" y2="20" />
+            </svg>
+            <p class="col-6 p-lg-2 d-none d-lg-block">Codea</p>
+          </div>
+          <div class="row">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-school col-lg-6"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#79C7C7"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" />
+              <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" />
+            </svg>
+            <p class="col-6 p-lg-2 d-none d-lg-block">Learning</p>
+          </div>
+          <div class="row">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-brand-steam col-lg-6"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#790AE6"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M16.5 5a4.5 4.5 0 1 1 -.653 8.953l-4.347 3.009l0 .038a3 3 0 0 1 -2.824 2.995l-.176 .005a3 3 0 0 1 -2.94 -2.402l-2.56 -1.098v-3.5l3.51 1.755a2.989 2.989 0 0 1 2.834 -.635l2.727 -3.818a4.5 4.5 0 0 1 4.429 -5.302z"
+              />
+              <circle fill="currentColor" cx="16.5" cy="9.5" r="1" />
+            </svg>
+            <p class="col-6 p-lg-2 d-none d-lg-block">Colabora</p>
+          </div>
+        </div>
+        <!-- DIV 1.2 -->
+        <div class="h-20 p-lg-3 mb-2 border rounded-3">
+          <div class="titulos d-none d-lg-block">
+            <h3>Account</h3>
+          </div>
+          <div class="row">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-settings col-lg-6"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#79C7C7"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+              />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <p class="col-6 p-lg-2 d-none d-lg-block">Tools</p>
+          </div>
+          <div class="row">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-chart-bar col-lg-6"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#79C7C7"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <rect x="3" y="12" width="6" height="8" rx="1" />
+              <rect x="9" y="8" width="6" height="12" rx="1" />
+              <rect x="15" y="4" width="6" height="16" rx="1" />
+              <line x1="4" y1="20" x2="18" y2="20" />
+            </svg>
+            <p class="col-6 p-lg-2 d-none d-lg-block">Data</p>
+          </div>
+          <div class="row">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-brand-snapchat col-lg-6"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#79C7C7"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M16.882 7.842a4.882 4.882 0 0 0 -9.764 0c0 4.273 -.213 6.409 -4.118 8.118c2 .882 2 .882 3 3c3 0 4 2 6 2s3 -2 6 -2c1 -2.118 1 -2.118 3 -3c-3.906 -1.709 -4.118 -3.845 -4.118 -8.118zm-13.882 8.119c4 -2.118 4 -4.118 1 -7.118m17 7.118c-4 -2.118 -4 -4.118 -1 -7.118"
+              />
+            </svg>
+            <p class="col-6 p-lg-2 d-none d-lg-block">Chat</p>
+          </div>
+        </div>
+      </div>
+      <!-- DIV 2 -->
+      <div class="contenido-2 container col-12 col-lg-10">
+        <!-- GRID CONTACTOS  -->
+        <div class="cuadros" id="contactos">
+          <div class="grid-container">
+            <div class="persona persona-1">
+              <img src="img/gandalf.jpg" alt="" class="persona-img" />
+              <div class="persona-name-username">
+                <p class="persona-name"></p>
+                <p class="persona-username"></p>
+              </div>
+              <button id="joel">Añadir amigo</button>
+              <button
+                id="joel2"
+                style="background-color: blueviolet; display: none"
+              >
+                Petición enviada
+              </button>
+            </div>
+
+            <div class="persona persona-2">
+              <img src="img/galadriel.webp" alt="" class="persona-img" />
+              <div class="persona-name-username">
+                <p class="persona-name"></p>
+                <p class="persona-username"></p>
+              </div>
+              <button id="tony">Añadir amigo</button>
+              <button
+                id="tony2"
+                style="background-color: blueviolet; display: none"
+              >
+                Petición enviada
+              </button>
+            </div>
+            <div class="persona persona-3">
+              <img src="img/frodo.jpg" alt="" class="persona-img" />
+              <div class="persona-name-username">
+                <p class="persona-name"></p>
+                <p class="persona-username"></p>
+              </div>
+              <button id="beethoven">Añadir amigo</button>
+              <button
+                id="beethoven2"
+                style="background-color: blueviolet; display: none"
+              >
+                Petición enviada
+              </button>
+            </div>
+            <div class="persona persona-4">
+              <img src="img/npc1.png" alt="Foto usuario" class="persona-img" />
+              <div class="persona-name-usimg/npc1.pngername">
+                <p class="persona-name"></p>
+                <p class="persona-username"></p>
+              </div>
+              <button id="gal">Añadir amigo</button>
+              <button
+                id="gal2"
+                style="background-color: blueviolet; display: none"
+              >
+                Petición enviada
+              </button>
+            </div>
+            <div class="persona persona-5">
+              <img src="img/npc1.png" alt="Foto usuario" class="persona-img" />
+              <div class="persona-name-username">
+                <p class="persona-name"></p>
+                <p class="persona-username"></p>
+              </div>
+              <button id="leo">Añadir amigo</button>
+              <button
+                id="leo2"
+                style="background-color: blueviolet; display: none"
+              >
+                Petición enviada
+              </button>
+            </div>
+            <div class="persona persona-6">
+              <img src="img/npc1.png" alt="Foto usuario" class="persona-img" />
+              <div class="persona-name-username">
+                <p class="persona-name"></p>
+                <p class="persona-username"></p>
+              </div>
+              <button id="frodo">Añadir amigo</button>
+              <button
+                id="frodo2"
+                style="background-color: blueviolet; display: none"
+              >
+                Petición enviada
+              </button>
+            </div>
+            <div class="persona persona-7">
+              <img src="img/npc1.png" alt="Foto usuario" class="persona-img" />
+              <div class="persona-name-username">
+                <p class="persona-name"></p>
+                <p class="persona-username"></p>
+              </div>
+              <button id="jimi">Añadir amigo</button>
+              <button
+                id="jimi2"
+                style="background-color: blueviolet; display: none"
+              >
+                Petición enviada
+              </button>
+            </div>
+            <div class="persona persona-8">
+              <img src="img/npc1.png" alt="Foto usuario" class="persona-img" />
+              <div class="persona-name-username">
+                <p class="persona-name"></p>
+                <p class="persona-username"></p>
+              </div>
+              <button id="jimi">Añadir amigo</button>
+              <button
+                id="jimi2"
+                style="background-color: blueviolet; display: none"
+              >
+                Petición enviada
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- FOOTER + BOTONES LATERALES -->
+    <!-- TECLA ACADEMY -->
+    <a class="academia" href="https://tecla.academy/" target="_blank">
+      <img
+        src="https://tecla.academy/assets/images/logo.svg"
+        alt="Tecla Academy URL"
+        width="150px"
+        height="35x"
+      />
+    </a>
+    <!-- BOTON MESSAGE -->
+    <div class="message d-none d-md-block" id="mSSg">
+      <div id="btn-message">
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-brand-telegram"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+          </svg>
+        </a>
+      </div>
+      <section id="btn-message2" style="display: none">
+        <div class="container py-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-8 col-lg-7">
+              <div class="card" id="chat1" style="border-radius: 15px">
+                <div class="d-flex">
+                  <div
+                    class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+                    style="
+                      flex: 90%;
+                      border-top-left-radius: 15px;
+                      border-top-right-radius: 15px;
+                      background-color: #79c7c7 !important;
+                    "
+                  >
+                    <i class="fas fa-angle-left"></i>
+                    <p class="mb-0 fw-bold">Live chat</p>
+                    <i class="fas fa-times"></i>
+                  </div>
+                  <button class="btn" id="escape">x</button>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex flex-row justify-content-start mb-4">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                      alt="avatar 1"
+                      style="width: 45px; height: 100%"
+                    />
+                    <div
+                      class="p-3 ms-3"
+                      style="
+                        border-radius: 15px;
+                        background-color: rgba(57, 192, 237, 0.2);
+                      "
+                    >
+                      <p class="small mb-0">
+                        Hello and thank you for visiting MDBootstrap. Please
+                        click the video below.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row justify-content-end mb-4">
+                    <div
+                      class="p-3 me-3 border"
+                      style="border-radius: 15px; background-color: #fbfbfb"
+                    >
+                      <p class="small mb-0">
+                        Thank you, I really like your product.
+                      </p>
+                    </div>
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                      alt="avatar 1"
+                      style="width: 45px; height: 100%"
+                    />
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row justify-content-start mb-4">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                    alt="avatar 1"
+                    style="width: 45px; height: 100%"
+                  />
+                  <div
+                    class="p-3 ms-3"
+                    style="
+                      border-radius: 15px;
+                      background-color: rgba(57, 192, 237, 0.2);
+                    "
+                  >
+                    <p class="small mb-0">...</p>
+                  </div>
+                </div>
+
+                <div class="form-outline mx-3">
+                  <textarea
+                    class="form-control"
+                    id="textAreaExample"
+                    rows="4"
+                  ></textarea>
+                  <label class="form-label" for="textAreaExample"
+                    >Type your message</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- NUEVO FOOTER -->
+    <div class="container footer d-none d-md-block">
+      <footer class="">
+        <ul class="nav justify-content-center border-bottom">
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">Features</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">About</a>
+          </li>
+        </ul>
+        <p class="text-center text-muted mt-2">© 2023 Tecla, Grupo 11</p>
+      </footer>
+    </div>
+    <script src="js/addFriend.js"></script>
+    <script src="js/messageNav.js"></script>
+    <script src="js/personas.js"></script>
+  </body>
+</html>

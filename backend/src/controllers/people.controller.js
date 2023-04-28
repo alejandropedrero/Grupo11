@@ -1,0 +1,1 @@
+export const getPeople = (req, res) => res.render("people");
