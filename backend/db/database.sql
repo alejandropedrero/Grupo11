@@ -90,10 +90,10 @@ CREATE TABLE notifications (
 );
 
 INSERT INTO users (name, last_name, birthdate, email, password, location)
-VALUES ('David', 'Montero', '1992-10-05', 'Dxworld@gmail.com', 'password123', 'Gijón');
+VALUES ('David', 'Montero', '1992-10-05', 'Dxworld@gmail.com', md5('password123'), 'Gijón');
 
 INSERT INTO users (name, last_name, birthdate, email, password, location)
-VALUES ('Sonia', 'Bueno', '1992-10-05', 'bueno.g.sonia@gmail.com', 'password123', 'Gijón');
+VALUES ('Sonia', 'Bueno', '1992-10-05', 'bueno.g.sonia@gmail.com', md5('password123'), 'Gijón');
 
 INSERT INTO users (name, last_name, birthdate, email, password, location)
-VALUES ('Alejandro', 'Pedrero', '1988-09-29', 'apedrerovega@gmail.com', 'password123', 'Gijón');
+VALUES ('Alejandro', 'Pedrero', '1988-09-29', 'apedrerovega@gmail.com', md5('password123'), 'Gijón');

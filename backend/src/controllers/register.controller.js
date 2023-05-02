@@ -1,9 +1,5 @@
-import path from "path";
 import { pool } from "../db.js";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import bcrypt from "bcrypt";
 
 export const getRegister = (req, res) => {
   res.render("register");
@@ -11,11 +7,13 @@ export const getRegister = (req, res) => {
 
 export const validateRegister = async (req, res) => {
   try {
-    const { name, email, password, last_name } = req.body;
+    const { email, password, name } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     await pool.query(
-      "INSERT INTO users (name, last_name, email, password) VALUES (?, ?, ?, ?)",
-      [name, last_name, email, password]
+      "INSERT INTO users (email, password, name) VALUES (?, ?, ?)",
+      [email, hashedPassword, name]
     );
 
     return res.status(200).redirect("/login");
