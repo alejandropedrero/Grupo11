@@ -33,6 +33,10 @@ app.use(usersRoutes);
 app.use(peopleRoutes);
 app.use(profileRoutes);
 
+app.use((req, res, next) => {
+  res.status(404).render("404");
+});
+
 app.listen(3000);
 
 console.log(`Server running on port ${3000}`);
