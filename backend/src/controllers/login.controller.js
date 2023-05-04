@@ -40,9 +40,7 @@ export const validateLogin = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.cookie("jwt", token, { httpOnly: true, secure: true });
-
-    return res.redirect("/index");
+    return res.status(200).json({ token, userId: rows[0].id });
   } catch (error) {
     console.error(error);
     return res.status(500).send("Error occurred while logging in");
