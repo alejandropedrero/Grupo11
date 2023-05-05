@@ -20,12 +20,12 @@ app.use(express.static(path.join(__dirname, "../../frontend")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/register", registerRoutes);
-app.use("/login", loginRoutes);
-app.use("/index", indexRoutes);
-app.use("/users", usersRoutes);
-app.use("/people", peopleRoutes);
-app.use("/profile", profileRoutes);
+app.use(registerRoutes);
+app.use(loginRoutes);
+app.use(indexRoutes);
+app.use(usersRoutes);
+app.use(peopleRoutes);
+app.use(profileRoutes);
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "../../frontend/views/404.html"));
