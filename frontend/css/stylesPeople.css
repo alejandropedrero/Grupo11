@@ -1,0 +1,87 @@
+/* BOTONES NAVBAR Y GENERAL */
+.btn-navbar {
+  border-color: white;
+  color: white;
+  transition: 0.3;
+}
+
+.btn-navbar:hover {
+  background-color: rgb(224, 224, 224);
+  border-color: white;
+  color: #79c7c7;
+}
+
+.persona {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.persona img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.persona-name-username {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.persona-name {
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none !important;
+}
+
+.persona-username {
+  font-size: 0.75rem;
+  text-align: center;
+  color: #555;
+}
+
+.persona-name-username p {
+  margin: 0;
+}
+
+.persona button {
+  background-color: #79c7c7;
+  border: none;
+  padding: 5px 10px;
+  color: #f5f5f5;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.persona button:hover {
+  opacity: 0.75;
+}
+
+.academia {
+  position: fixed;
+  bottom: 100px;
+  right: 15px;
+  z-index: 0;
+  transition: 0.2s;
+}
+
+.academia:hover {
+  background-color: #79c7c7;
+  width: 200px;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.enlace {
+  color: black;
+  text-decoration: none;
+}
+
+.a:visited {
+  color: black;
+}

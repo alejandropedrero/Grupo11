@@ -1,20 +1,31 @@
+const checkAuth = () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "../views/login.html";
+  }
+};
+
+checkAuth();
+
 const nameElements = document.querySelectorAll(".persona-name");
 const emailElements = document.querySelectorAll(".persona-username");
 
-// Fetch the data from the local API
+const userId = localStorage.getItem("userId");
 
-fetch("http://localhost:3000/users/")
+fetch(`http://localhost:3000/people`, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "X-User-Id": userId,
+  },
+})
   .then((response) => response.json())
   .then((data) => {
-    // Extract the required information from the API response
     const people = data.map((result) => ({
       name: result.name,
       email: result.email,
     }));
 
-    console.log(people);
-
-    // Update the HTML elements with the extracted information
     people.forEach((person, index) => {
       nameElements[index].textContent = person.name;
       emailElements[index].textContent = person.email;
