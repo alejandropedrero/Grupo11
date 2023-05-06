@@ -89,11 +89,11 @@ CREATE TABLE notifications (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-INSERT INTO users (name, last_name, birthdate, email, password, location)
-VALUES ('David', 'Montero', '1992-10-05', 'Dxworld@gmail.com', md5('password123'), 'Gijón');
+INSERT INTO users (name, email, password)
+VALUES ('David', 'Dxworld@gmail.com', md5('password123'));
 
-INSERT INTO users (name, last_name, birthdate, email, password, location)
-VALUES ('Sonia', 'Bueno', '1992-10-05', 'bueno.g.sonia@gmail.com', md5('password123'), 'Gijón');
+INSERT INTO users (name, email, password)
+VALUES ('Sonia', 'bueno.g.sonia@gmail.com', md5('password123'));
 
-INSERT INTO users (name, last_name, birthdate, email, password, location)
-VALUES ('Alejandro', 'Pedrero', '1988-09-29', 'apedrerovega@gmail.com', md5('password123'), 'Gijón');
+INSERT INTO users (name, email, password)
+VALUES ('Alejandro', 'apedrerovega@gmail.com', md5('password123'));

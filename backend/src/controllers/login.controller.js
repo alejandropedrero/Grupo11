@@ -1,18 +1,14 @@
 import { pool } from "../db.js";
 import bcrypt from "bcrypt";
-import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import path from "path";
+import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.join(__dirname, "./env/.env") });
-
-export const getLogin = (req, res) => {
-  res.sendFile(path.join(__dirname, "../../../frontend/views/login.html"));
-};
 
 export const validateLogin = async (req, res) => {
   const { email, password } = req.body;
