@@ -19,7 +19,7 @@ CREATE TABLE friends (
     user_id INT NOT NULL,
     friend_id INT NOT NULL,
     friendship_date DATE NOT NULL,
-    request_status VARCHAR(50) NOT NULL,
+    request_status VARCHAR(50) NOT NULL DEFAULT 'accepted',
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (friend_id) REFERENCES users(id)
@@ -89,11 +89,19 @@ CREATE TABLE notifications (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-INSERT INTO users (name, email, password)
-VALUES ('David', 'Dxworld@gmail.com', md5('password123'));
 
-INSERT INTO users (name, email, password)
-VALUES ('Sonia', 'bueno.g.sonia@gmail.com', md5('password123'));
+INSERT INTO users (name, email, password, profile_picture)
+VALUES ('David', 'Dxworld@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "frodo.jpg");
 
-INSERT INTO users (name, email, password)
-VALUES ('Alejandro', 'apedrerovega@gmail.com', md5('password123'));
+INSERT INTO users (name, email, password, profile_picture)
+VALUES ('Sonia', 'bueno.g.sonia@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "mononoke.jpg");
+
+INSERT INTO users (name, email, password, profile_picture)
+VALUES ('Alejandro', 'apedrerovega@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "kodama.jpg");
+
+INSERT INTO users (name, email, password, profile_picture)
+VALUES ('Scott', 'disastercollie@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "border-collie.jpg");
+
+INSERT INTO users (name, email, password, profile_picture)
+VALUES ('Gal', 'gal@outlook.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "gal-gadot.webp");
+
