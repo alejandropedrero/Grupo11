@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("password-input");
   const nameInput = document.getElementById("name-input");
   const errorContainer = document.getElementById("error-container");
+  const modal = new bootstrap.Modal(document.getElementById("registerModal"));
 
   registerForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+    event.preventDefault(); //Corta la ejecución, evitando que finalice el registro sin comprobar el if primero.
 
     const email = emailInput.value;
     const password = passwordInput.value;
@@ -32,7 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         console.log(data.message);
-        window.location.href = "./login.html";
+        modal.show(); //Modal con mensaje de registro exitoso
+        setTimeout(function() {
+          window.location.href = "./login.html";
+        }, 2000);
+        
       } else {
         console.log(data.error);
         errorContainer.innerHTML = data.error;
