@@ -1,4 +1,5 @@
 const loginForm = document.getElementById("login-form");
+const errorContainer = document.getElementById("error-container");
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -22,5 +23,6 @@ loginForm.addEventListener("submit", async (event) => {
   } else {
     const errorMessage = await response.text();
     console.error(errorMessage);
+    errorContainer.innerHTML = "Usuario o contraseña incorrectos";
   }
 });
