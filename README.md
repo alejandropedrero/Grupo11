@@ -1,56 +1,39 @@
-# Entrega Final Sprint I
-
-Para esta entrega se ha incorporado código del desaparecido grupo 9 con el fin de tener el mejor punto de partida como grupo 11. Incorporaciones:
-
-- Implementadas nuevas publicaciones en página index + aplicado estilo correspondiente de grupo 11
-- Implementado borrado de datos de perfil al Eliminar cuenta + Confirm
+# Reentrega Final Sprint I
 
 ## ¿Qué necesitas saber?
 
 1. El script SQL está en backend/db/database.sql
-2. Las variables de entorno están configuradas y enlazadas para la conexión con la base de datos en backend/src/env
-3. Para iniciar hay que escribir el comando `npm run start` desde cd backend
+2. Las variables de entorno están configuradas y enlazadas para la conexión con la base de datos en backend/src/env/.env
+3. Para conectar la base de datos hay que escribir el comando `npm run start` desde grupo11/backend
 
+## Frontend
 
-## Endpoints
+auth.js:
 
-Los endpoints que están operativos son:
+const checkAuth = () => {
+const token = localStorage.getItem("token");
+if (!token) {
+window.location.href = "../views/login.html";
+}
+};
 
-- Index
-- People
-- Register
-- Login
-- Profile
-- Users, que devuelve un JSON con los datos de los usuarios.
+Comprueba el Jason Web Token y redirecciona a login.html si se quiere entrar a otra página que no sea Login o Registro si no se ha iniciado sesión.
 
-## API local
+Desde frontend/views:
 
-Cambio del uso de la API "Random User generator" por nuestra API, que aplicamos en people.ejs
+- register.html -> Permite registro de un nuevo usuario
+- login.html -> Compara los datos en la base de datos para permitir iniciar sesión. Guarda ID del usuario y el JWT en Local Storage
+- index.html -> Página para posteos (se accede haciendo click en el logo de Navbar)
+- people.html -> Muestra todas las personas registradas en la red social (excepto el usuario que ha iniciado sesión). Permite añadir amigos que después aparecen en friends.html (Amigos en la Navbar). Barra de búsqueda implementada
+- friends.html -> Muestra los amigos que el usuario tiene si se han agregado desde people.html (Personas en la Navbar). Barra de búsqueda implementada
+- profile.html -> Accesible desde el dropdown de la navbar. Fetch desde nuestra API para mostrar los campos de los que se tienen datos al registrarse. Posteriormente implementaremos la opción de editar campos mediante una petición PATCH.
 
-```
-fetch("http://localhost:3000/users/")
-  .then((response) => response.json())
-  .then((data) => {
-    // Extract the required information from the API response
-    const people = data.map((result) => ({
-      name: result.name,
-      email: result.email,
-    }));
+## API
 
-    console.log(people);
+Desde backend/src:
 
-    // Update the HTML elements with the extracted information
-    people.forEach((person, index) => {
-      nameElements[index].textContent = person.name;
-      emailElements[index].textContent = person.email;
-    });
-  })
-  .catch((error) => console.log(error));
-
-```
+-
 
 ## Notas
 
-- Es posible registrarse, iniciar sesión con esos datos y ver el nuevo usuario agregado como amigo.
-- Queda pendiente implementar la página de publicaciones en la carpeta backend.
-
+- La carpeta 'pendiente' son aspectos que tenemos sin implementar o residuales de los proyectos y grupos anteriores en los que estábamos.

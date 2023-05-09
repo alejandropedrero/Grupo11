@@ -14,103 +14,110 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
     <title>Teclers | Principal</title>
-    <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/stylesOverall.css" />
+    <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body class="container">
-    <!-- NUEVA NAVBAR -->
-    <nav
-      class="navbar navbar-nav navbar-expand-lg container rounded-3 my-3 sticky-top"
-      style="background-color: #79c7c7"
-    >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img
-            src="../img/logo-teclers-final.svg"
-            alt="Logo Teclers"
-            width="100rem"
-          />
-        </a>
-        <button
-          class="navbar-toggler collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="navbarSupportedContent">
-          <form class="d-flex me-auto ms-auto my-2 col-lg-5" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Busca algo..."
-              aria-label="Search"
+    <div class="container">
+      <nav
+        class="navbar navbar-nav navbar-expand-lg container rounded-3 my-3 sticky-top"
+        style="background-color: #79c7c7"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="../img/logo-teclers-final.svg"
+              alt="Logo Teclers"
+              width="100rem"
             />
-            <button class="btn btn-outline-success btn-navbar" type="submit">
-              Buscar
-            </button>
-          </form>
-          <ul class="navbar-nav mb-lg-0 d-block d-lg-flex align-items-center">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                style="color: white"
-                aria-current="page"
-                href="people.html"
-                >Personas</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" style="color: white" href="friends.html"
-                >Amigos</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                style="color: white"
-                href="https://tecla.academy/"
-                target="_blank"
-                >Cursos</a
-              >
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="../img/profile-pic.png"
-                  alt="Foto perfil"
-                  width="40rem"
+          </a>
+          <button
+            class="navbar-toggler collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <form class="d-flex me-auto ms-auto my-2 col-lg-5" role="search">
+              <div class="input-group">
+                <span class="input-group-text"
+                  ><i class="bi bi-search"></i
+                ></span>
+                <input
+                  class="form-control"
+                  type="search"
+                  placeholder="Busca un post"
+                  aria-label="Search"
+                  id="search-input"
                 />
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="profile.html">Tu Perfil</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Ajustes</a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+              </div>
+            </form>
+            <ul class="navbar-nav mb-lg-0 d-block d-lg-flex align-items-center">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  style="color: white"
+                  aria-current="page"
+                  href="people.html"
+                  >Personas</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color: white" href="friends.html"
+                  >Amigos</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  style="color: white"
+                  href="https://tecla.academy/"
+                  target="_blank"
+                  >Cursos</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src=""
+                    alt="Foto perfil"
+                    width="40rem"
+                    class="rounded-circle user-profile-picture"
+                  />
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="profile.html">Tu perfil</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Ajustes</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item log-out" href="#">Cerrar sesión</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-    <!-- CONTENIDO -->
+      </nav>
+    </div>
+
     <main class="container my-2 p-0" id="outclick">
       <!-- FOTO ENCABEZADO -->
       <div class="row container jumbotron p-4 p-md-5 rounded mb-lg-1 mb-0">
@@ -137,7 +144,7 @@
           <!-- DIV 1.1 -->
           <div class="h-20 p-lg-3 mb-3 border rounded-3">
             <div class="titulos d-none d-lg-block">
-              <h3>Explore</h3>
+              <h3>Explora</h3>
             </div>
             <div class="row">
               <svg
@@ -156,7 +163,7 @@
                 <rect x="3" y="5" width="18" height="14" rx="4" />
                 <path d="M10 9l5 3l-5 3z" />
               </svg>
-              <div class="col-6 p-lg-2 d-none d-lg-block">Videos</div>
+              <div class="col-6 p-lg-2 d-none d-lg-block">Tutoriales</div>
             </div>
             <div class="row">
               <svg
@@ -176,7 +183,7 @@
                 <polyline points="17 8 21 12 17 16" />
                 <line x1="14" y1="4" x2="10" y2="20" />
               </svg>
-              <p class="col-6 p-lg-2 d-none d-lg-block">Codea</p>
+              <p class="col-6 p-lg-2 d-none d-lg-block">Ejercicios</p>
             </div>
             <div class="row">
               <svg
@@ -195,7 +202,7 @@
                 <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" />
                 <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" />
               </svg>
-              <p class="col-6 p-lg-2 d-none d-lg-block">Learning</p>
+              <p class="col-6 p-lg-2 d-none d-lg-block">Exámenes</p>
             </div>
             <div class="row">
               <svg
@@ -219,74 +226,6 @@
               <p class="col-6 p-lg-2 d-none d-lg-block">Colabora</p>
             </div>
           </div>
-          <!-- DIV 1.2 -->
-          <div class="h-20 p-lg-3 mb-2 border rounded-3">
-            <div class="titulos d-none d-lg-block">
-              <h3>Account</h3>
-            </div>
-            <div class="row">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-settings col-lg-6"
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#79C7C7"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                  d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
-                />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              <p class="col-6 p-lg-2 d-none d-lg-block">Tools</p>
-            </div>
-            <div class="row">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-chart-bar col-lg-6"
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#79C7C7"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <rect x="3" y="12" width="6" height="8" rx="1" />
-                <rect x="9" y="8" width="6" height="12" rx="1" />
-                <rect x="15" y="4" width="6" height="16" rx="1" />
-                <line x1="4" y1="20" x2="18" y2="20" />
-              </svg>
-              <p class="col-6 p-lg-2 d-none d-lg-block">Data</p>
-            </div>
-            <div class="row">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-brand-snapchat col-lg-6"
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#79C7C7"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path
-                  d="M16.882 7.842a4.882 4.882 0 0 0 -9.764 0c0 4.273 -.213 6.409 -4.118 8.118c2 .882 2 .882 3 3c3 0 4 2 6 2s3 -2 6 -2c1 -2.118 1 -2.118 3 -3c-3.906 -1.709 -4.118 -3.845 -4.118 -8.118zm-13.882 8.119c4 -2.118 4 -4.118 1 -7.118m17 7.118c-4 -2.118 -4 -4.118 -1 -7.118"
-                />
-              </svg>
-              <p class="col-6 p-lg-2 d-none d-lg-block">Chat</p>
-            </div>
-          </div>
         </div>
         <!-- DIV 2 - MEDIO -->
         <div class="col-md-10 col-lg-7 col-xl-8container" id="contenido">
@@ -294,27 +233,27 @@
           <section class="container m-0 p-0 rounded-3">
             <div class="container-fluid bg-light border rounded mb-2">
               <div class="d-flex align-items-center mt-3 mb-1">
-                <a href="perfil.html">
+                <a href="profile.html">
                   <img
-                    src="../img/profile-pic.png"
-                    alt="Kenzo"
-                    width="50px"
-                    height="50px"
-                    class="m-2"
+                    src=""
+                    alt="User profile"
+                    width="40px"
+                    height="40px"
+                    class="m-2 user-profile-picture rounded-circle"
                     title="ir a tu perfil"
                   />
                 </a>
                 <h3 class="mb-0">Nueva publicación</h3>
               </div>
               <div class="row">
-                <form id="publicacion-form">
+                <form id="post-form">
                   <div class="mb-2">
                     <textarea
                       class="form-control text-align"
                       rows="5"
                       id="comment"
                       name="text"
-                      placeholder="Muéstranos tu trabajo"
+                      placeholder="¿Qué te cuentas?"
                     ></textarea>
                   </div>
                   <button
@@ -327,248 +266,11 @@
               </div>
             </div>
             <div class="container m-0 p-0">
-              <!-- <div class="row text-center">
-                      <h3 class="fLetter">PUBLICACIONES</h3>
-                  </div> -->
               <div id="publicaciones-container" class="container m-0 p-0">
                 <!-- Aquí se mostrarán las publicaciones -->
               </div>
             </div>
           </section>
-          <!-- LINEA DIVISORIA -->
-          <hr class="featurette-divider mb-lg-4 mb-3" />
-          <!-- DIV 2.2 PUBLICACIONES DIVIDIDAS -->
-          <div class="row container m-0 p-0">
-            <div class="col-md-6">
-              <div
-                class="no-gutters border rounded overflow-hidden flex-md-row mb-4 mb-md-0 shadow-sm h-md-250 position-relative"
-              >
-                <div class="p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2" style="color: blueviolet"
-                    >Cheat Sheets</strong
-                  >
-                  <h3 class="mb-0">Secretos de JS</h3>
-                  <div class="mb-1 text-muted">Nov 11</div>
-                  <p class="mb-auto">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
-                  <a
-                    href="https://www.arkaitzgarro.com/javascript/capitulo-15.html"
-                    target="_blank"
-                    class="stretched-link"
-                    >Continue reading</a
-                  >
-                </div>
-                <div class="rounded-3 d-none d-lg-block">
-                  <img
-                    src="../img/javascript.png"
-                    alt="Trozo código"
-                    width="350"
-                    height="200"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="no-gutters border rounded overflow-hidden flex-md-row mb-4 mb-md-0 shadow-sm h-md-250 position-relative"
-              >
-                <div class="p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2" style="color: blueviolet"
-                    >Bootstrap</strong
-                  >
-                  <h3 class="mb-0">Copia y pega</h3>
-                  <div class="mb-1 text-muted">Jan 23</div>
-                  <p class="mb-auto">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
-                  <a
-                    href="https://getbootstrap.com/docs/5.3/getting-started/introduction/"
-                    target="_blank"
-                    class="stretched-link"
-                    >Continue reading</a
-                  >
-                </div>
-                <div class="d-none d-lg-block">
-                  <img
-                    src="../img/bootstrap.png"
-                    alt="Foto bootstrap"
-                    width="350"
-                    height="200"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- LINEA DIVISORIA -->
-          <hr class="featurette-divider my-lg-4 my-3" />
-          <!-- DIV 2.3 PUBLICACIONES VARIAS -->
-          <div class="row featurette">
-            <div class="col-md-7">
-              <h2 class="featurette-heading">
-                First featurette heading.
-                <span class="text-muted">It’ll blow your mind.</span>
-              </h2>
-              <p class="lead">
-                Donec ullamcorper nulla non metus auctor fringilla. Vestibulum
-                id ligula porta felis euismod semper. Praesent commodo cursus
-                magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus
-                ac cursus commodo.
-              </p>
-            </div>
-            <div class="col-md-5">
-              <img
-                src="../img/oviedo.jpeg"
-                alt="Oviedo"
-                class="img-fluid mx-auto mt-md-auto"
-                width="500"
-                height="500"
-              />
-            </div>
-            <div class="block">
-              <svg
-                class="heart-icon"
-                id="heart"
-                width="30"
-                height="25"
-                viewBox="0 0 106 97"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  class="fill-color-shape"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M73.0406 3.04949C65.7359 2.94379 58.3559 5.38824 53.2483 12.3801C48.1271 5.39042 40.631 3.04941 33.4677 3.04941C18.2587 3.04941 3.04622 15.7081 3.04622 33.4698C3.04622 51.0995 14.3683 66.123 26.1679 76.6801C32.0812 81.9708 38.1493 86.1719 43.0557 89.0533C45.5086 90.4938 47.6791 91.6092 49.402 92.3672C50.2628 92.7459 51.0206 93.0393 51.6517 93.2395C52.2639 93.4336 52.8188 93.5607 53.2487 93.5607C53.6786 93.5607 54.2336 93.4336 54.8458 93.2395C55.4769 93.0393 56.2347 92.7459 57.0955 92.3672C58.8183 91.6092 60.9889 90.4938 63.4418 89.0533C68.3481 86.1719 74.4162 81.9708 80.3295 76.6801C92.1292 66.1229 103.451 51.0995 103.451 33.4698C103.451 15.6993 88.2313 3.26928 73.0406 3.04949Z"
-                />
-                <path
-                  d="M53.2483 12.3801L51.2316 13.8577C51.7029 14.5009 52.4527 14.8807 53.25 14.8801C54.0474 14.8796 54.7966 14.4987 55.267 13.8548L53.2483 12.3801ZM73.0406 3.04949L73.0767 0.549748L73.0406 3.04949ZM26.1679 76.6801L24.501 78.5433L24.501 78.5433L26.1679 76.6801ZM43.0557 89.0533L44.3217 86.8975L44.3217 86.8975L43.0557 89.0533ZM49.402 92.3672L50.4088 90.0789L50.4088 90.0789L49.402 92.3672ZM51.6517 93.2395L52.4075 90.8565L52.4074 90.8565L51.6517 93.2395ZM54.8458 93.2395L54.09 90.8565L54.09 90.8565L54.8458 93.2395ZM57.0955 92.3672L58.1023 94.6555L58.1023 94.6555L57.0955 92.3672ZM63.4418 89.0533L62.1757 86.8975L62.1757 86.8975L63.4418 89.0533ZM80.3295 76.6801L81.9965 78.5433L81.9965 78.5433L80.3295 76.6801ZM55.267 13.8548C59.7836 7.67202 66.2981 5.45219 73.0044 5.54923L73.0767 0.549748C65.1736 0.435397 56.9283 3.10445 51.2295 10.9054L55.267 13.8548ZM33.4677 5.54941C40.0922 5.54941 46.7154 7.69369 51.2316 13.8577L55.2649 10.9026C49.5387 3.08715 41.1697 0.549414 33.4677 0.549414V5.54941ZM5.54622 33.4698C5.54622 17.2225 19.5018 5.54941 33.4677 5.54941V0.549414C17.0157 0.549414 0.546219 14.1936 0.546219 33.4698H5.54622ZM27.8349 74.817C16.2174 64.4228 5.54622 50.0268 5.54622 33.4698H0.546219C0.546219 52.1722 12.5192 67.8231 24.501 78.5433L27.8349 74.817ZM44.3217 86.8975C39.5433 84.0912 33.6121 79.9859 27.8349 74.817L24.501 78.5433C30.5503 83.9556 36.7554 88.2525 41.7897 91.209L44.3217 86.8975ZM50.4088 90.0789C48.7945 89.3686 46.7116 88.3011 44.3217 86.8975L41.7897 91.209C44.3055 92.6865 46.5638 93.8497 48.3951 94.6555L50.4088 90.0789ZM52.4074 90.8565C51.8878 90.6917 51.2173 90.4346 50.4088 90.0789L48.3951 94.6555C49.3082 95.0572 50.1534 95.387 50.8959 95.6225L52.4074 90.8565ZM53.2487 91.0607C53.2633 91.0607 53.1984 91.0609 53.0284 91.0254C52.867 90.9918 52.6608 90.9368 52.4075 90.8565L50.8959 95.6225C51.5581 95.8325 52.417 96.0607 53.2487 96.0607V91.0607ZM54.09 90.8565C53.8367 90.9368 53.6305 90.9918 53.4691 91.0254C53.299 91.0609 53.2341 91.0607 53.2487 91.0607V96.0607C54.0805 96.0607 54.9393 95.8325 55.6016 95.6225L54.09 90.8565ZM56.0887 90.0789C55.2801 90.4346 54.6096 90.6917 54.09 90.8565L55.6016 95.6225C56.3441 95.387 57.1893 95.0572 58.1023 94.6555L56.0887 90.0789ZM62.1757 86.8975C59.7858 88.3011 57.703 89.3686 56.0887 90.0789L58.1023 94.6555C59.9337 93.8497 62.1919 92.6865 64.7078 91.209L62.1757 86.8975ZM78.6626 74.817C72.8853 79.9859 66.9542 84.0913 62.1757 86.8975L64.7078 91.209C69.742 88.2525 75.9471 83.9556 81.9965 78.5433L78.6626 74.817ZM100.951 33.4698C100.951 50.0268 90.2801 64.4228 78.6626 74.817L81.9965 78.5433C93.9783 67.8231 105.951 52.1722 105.951 33.4698H100.951ZM73.0044 5.54923C87.0131 5.75192 100.951 17.2432 100.951 33.4698H105.951C105.951 14.1555 89.4496 0.78665 73.0767 0.549748L73.0044 5.54923Z"
-                  fill="#e74c3c"
-                />
-              </svg>
-              <span class="number-of-likes" id="number-of-likesFirst">6</span
-              ><span> me gusta/s</span>
-            </div>
-          </div>
-          <!-- LINEA DIVISORIA -->
-          <hr class="featurette-divider my-lg-4 my-3" />
-          <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading">
-                Oh yeah, it is that good.
-                <span class="text-muted">See for yourself.</span>
-              </h2>
-              <p class="lead">
-                Donec ullamcorper nulla non metus auctor fringilla. Vestibulum
-                id ligula porta felis euismod semper. Praesent commodo cursus
-                magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus
-                ac cursus commodo.
-              </p>
-            </div>
-            <div class="col-md-5 order-md-1">
-              <img
-                src="../img/grado.webp"
-                alt="Grao"
-                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                width="500"
-                height="500"
-              />
-            </div>
-            <div class="block order-md-3">
-              <svg
-                class="heart-icon2"
-                id="heart2"
-                width="30"
-                height="25"
-                viewBox="0 0 106 97"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  class="fill-color-shape2"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M73.0406 3.04949C65.7359 2.94379 58.3559 5.38824 53.2483 12.3801C48.1271 5.39042 40.631 3.04941 33.4677 3.04941C18.2587 3.04941 3.04622 15.7081 3.04622 33.4698C3.04622 51.0995 14.3683 66.123 26.1679 76.6801C32.0812 81.9708 38.1493 86.1719 43.0557 89.0533C45.5086 90.4938 47.6791 91.6092 49.402 92.3672C50.2628 92.7459 51.0206 93.0393 51.6517 93.2395C52.2639 93.4336 52.8188 93.5607 53.2487 93.5607C53.6786 93.5607 54.2336 93.4336 54.8458 93.2395C55.4769 93.0393 56.2347 92.7459 57.0955 92.3672C58.8183 91.6092 60.9889 90.4938 63.4418 89.0533C68.3481 86.1719 74.4162 81.9708 80.3295 76.6801C92.1292 66.1229 103.451 51.0995 103.451 33.4698C103.451 15.6993 88.2313 3.26928 73.0406 3.04949Z"
-                />
-                <path
-                  d="M53.2483 12.3801L51.2316 13.8577C51.7029 14.5009 52.4527 14.8807 53.25 14.8801C54.0474 14.8796 54.7966 14.4987 55.267 13.8548L53.2483 12.3801ZM73.0406 3.04949L73.0767 0.549748L73.0406 3.04949ZM26.1679 76.6801L24.501 78.5433L24.501 78.5433L26.1679 76.6801ZM43.0557 89.0533L44.3217 86.8975L44.3217 86.8975L43.0557 89.0533ZM49.402 92.3672L50.4088 90.0789L50.4088 90.0789L49.402 92.3672ZM51.6517 93.2395L52.4075 90.8565L52.4074 90.8565L51.6517 93.2395ZM54.8458 93.2395L54.09 90.8565L54.09 90.8565L54.8458 93.2395ZM57.0955 92.3672L58.1023 94.6555L58.1023 94.6555L57.0955 92.3672ZM63.4418 89.0533L62.1757 86.8975L62.1757 86.8975L63.4418 89.0533ZM80.3295 76.6801L81.9965 78.5433L81.9965 78.5433L80.3295 76.6801ZM55.267 13.8548C59.7836 7.67202 66.2981 5.45219 73.0044 5.54923L73.0767 0.549748C65.1736 0.435397 56.9283 3.10445 51.2295 10.9054L55.267 13.8548ZM33.4677 5.54941C40.0922 5.54941 46.7154 7.69369 51.2316 13.8577L55.2649 10.9026C49.5387 3.08715 41.1697 0.549414 33.4677 0.549414V5.54941ZM5.54622 33.4698C5.54622 17.2225 19.5018 5.54941 33.4677 5.54941V0.549414C17.0157 0.549414 0.546219 14.1936 0.546219 33.4698H5.54622ZM27.8349 74.817C16.2174 64.4228 5.54622 50.0268 5.54622 33.4698H0.546219C0.546219 52.1722 12.5192 67.8231 24.501 78.5433L27.8349 74.817ZM44.3217 86.8975C39.5433 84.0912 33.6121 79.9859 27.8349 74.817L24.501 78.5433C30.5503 83.9556 36.7554 88.2525 41.7897 91.209L44.3217 86.8975ZM50.4088 90.0789C48.7945 89.3686 46.7116 88.3011 44.3217 86.8975L41.7897 91.209C44.3055 92.6865 46.5638 93.8497 48.3951 94.6555L50.4088 90.0789ZM52.4074 90.8565C51.8878 90.6917 51.2173 90.4346 50.4088 90.0789L48.3951 94.6555C49.3082 95.0572 50.1534 95.387 50.8959 95.6225L52.4074 90.8565ZM53.2487 91.0607C53.2633 91.0607 53.1984 91.0609 53.0284 91.0254C52.867 90.9918 52.6608 90.9368 52.4075 90.8565L50.8959 95.6225C51.5581 95.8325 52.417 96.0607 53.2487 96.0607V91.0607ZM54.09 90.8565C53.8367 90.9368 53.6305 90.9918 53.4691 91.0254C53.299 91.0609 53.2341 91.0607 53.2487 91.0607V96.0607C54.0805 96.0607 54.9393 95.8325 55.6016 95.6225L54.09 90.8565ZM56.0887 90.0789C55.2801 90.4346 54.6096 90.6917 54.09 90.8565L55.6016 95.6225C56.3441 95.387 57.1893 95.0572 58.1023 94.6555L56.0887 90.0789ZM62.1757 86.8975C59.7858 88.3011 57.703 89.3686 56.0887 90.0789L58.1023 94.6555C59.9337 93.8497 62.1919 92.6865 64.7078 91.209L62.1757 86.8975ZM78.6626 74.817C72.8853 79.9859 66.9542 84.0913 62.1757 86.8975L64.7078 91.209C69.742 88.2525 75.9471 83.9556 81.9965 78.5433L78.6626 74.817ZM100.951 33.4698C100.951 50.0268 90.2801 64.4228 78.6626 74.817L81.9965 78.5433C93.9783 67.8231 105.951 52.1722 105.951 33.4698H100.951ZM73.0044 5.54923C87.0131 5.75192 100.951 17.2432 100.951 33.4698H105.951C105.951 14.1555 89.4496 0.78665 73.0767 0.549748L73.0044 5.54923Z"
-                  fill="#e74c3c"
-                />
-              </svg>
-              <span class="number-of-likes" id="number-of-likesSecond">23</span
-              ><span> me gusta/s</span>
-            </div>
-          </div>
-          <!-- LINEA DIVISORIA -->
-          <hr class="featurette-divider my-lg-4 my-3" />
-          <div class="container">
-            <div class="col-md-12 mb-4">
-              <div class="h-100 p-3 bg-light border rounded-3">
-                <div class="d-flex">
-                  <img
-                    src="../img/elcomercio.jpeg"
-                    alt="Logo Comercio"
-                    width="40px"
-                    height="40px"
-                    class="rounded-5"
-                  />
-                  <h2 class="ms-3">El Comercio</h2>
-                </div>
-                <p>
-                  El BCE sube los tipos al 3,5% y advierte que está listo para
-                  inyectar liquidez a la banca. <br />
-                  Los expertos ponen en duda que la entidad europea vaya a
-                  mantener el ritmo de subidas en sus siguientes reuniones
-                  Lagarde, tras el 'shock' de Credit Suisse: «El sistema
-                  bancario europeo es resistente» Credit Suisse pide 50.000
-                  millones al Banco de Suiza para reforzar su liquidez...
-                  <a
-                    href="https://www.elcomercio.es/"
-                    class="enlace"
-                    target="_blank"
-                    >See more...</a
-                  >
-                </p>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="h-100 p-3 bg-light border rounded-3">
-                <h2>¡Descubre Gijón!</h2>
-                <img
-                  class="img-fluid rounded-2 mb-4"
-                  src="../img/gijon.jpeg"
-                  alt="Foto Gijon"
-                />
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Reiciendis illum ullam voluptatem iusto autem nisi quam
-                  eveniet error velit, itaque labore sequi aperiam dicta
-                  inventore beatae nesciunt nostrum. Laborum, labore.
-                  <a
-                    href="https://www.gijon.es/es"
-                    class="enlace"
-                    target="_blank"
-                    >See more...</a
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-          <nav class="blog-pagination my-4">
-            <a
-              class="btn btn-outline-primary btn-general"
-              style="color: white"
-              href="#"
-              >Older</a
-            >
-            <a
-              class="btn btn-outline-secondary disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Newer</a
-            >
-          </nav>
         </div>
         <!-- DIV 3 - DERECHA -->
         <div class="col d-none d-lg-block p-0">
@@ -596,11 +298,7 @@
               />
               <p class="my-auto ms-2">Frodo Bolsón</p>
             </div>
-            <a
-              class="d-flex benjiEnlace enlace"
-              style="color: black"
-              href="perfil-amigo.html"
-            >
+            <div class="d-flex mb-2">
               <img
                 src="../img/pedro.png"
                 alt="Foto de Pedro"
@@ -609,157 +307,11 @@
                 class="rounded-5"
               />
               <p class="my-auto ms-2">Benji Wallace</p>
-            </a>
+            </div>
           </div>
         </div>
       </div>
     </main>
-    <!-- BOTONES LATERALES -->
-    <!-- TECLA ACADEMY -->
-    <a class="academia" href="https://tecla.academy/" target="_blank">
-      <img
-        src="https://tecla.academy/assets/images/logo.svg"
-        alt="Tecla Academy URL"
-        width="150px"
-        height="35x"
-      />
-    </a>
-    <!-- BOTON MESSAGE -->
-    <div class="message d-none d-md-block" id="mSSg">
-      <div id="btn-message">
-        <a href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-brand-telegram"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="#ffffff"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
-          </svg>
-        </a>
-      </div>
-      <section id="btn-message2" style="display: none">
-        <div class="container py-5">
-          <div class="row d-flex justify-content-center">
-            <div class="col-8 col-lg-7">
-              <div class="card" id="chat1" style="border-radius: 15px">
-                <div class="d-flex">
-                  <div
-                    class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
-                    style="
-                      flex: 90%;
-                      border-top-left-radius: 15px;
-                      border-top-right-radius: 15px;
-                      background-color: #79c7c7 !important;
-                    "
-                  >
-                    <i class="fas fa-angle-left"></i>
-                    <p class="mb-0 fw-bold">Live chat</p>
-                    <i class="fas fa-times"></i>
-                  </div>
-                  <button class="btn" id="escape">x</button>
-                </div>
-                <div class="card-body">
-                  <div class="d-flex flex-row justify-content-start mb-4">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                    <div
-                      class="p-3 ms-3"
-                      style="
-                        border-radius: 15px;
-                        background-color: rgba(57, 192, 237, 0.2);
-                      "
-                    >
-                      <p class="small mb-0">
-                        Hello and thank you for visiting MDBootstrap. Please
-                        click the video below.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-end mb-4">
-                    <div
-                      class="p-3 me-3 border"
-                      style="border-radius: 15px; background-color: #fbfbfb"
-                    >
-                      <p class="small mb-0">
-                        Thank you, I really like your product.
-                      </p>
-                    </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                  </div>
-                </div>
-
-                <div class="d-flex flex-row justify-content-start mb-4">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                    alt="avatar 1"
-                    style="width: 45px; height: 100%"
-                  />
-                  <div
-                    class="p-3 ms-3"
-                    style="
-                      border-radius: 15px;
-                      background-color: rgba(57, 192, 237, 0.2);
-                    "
-                  >
-                    <p class="small mb-0">...</p>
-                  </div>
-                </div>
-
-                <div class="form-outline mx-3">
-                  <textarea
-                    class="form-control"
-                    id="textAreaExample"
-                    rows="4"
-                  ></textarea>
-                  <label class="form-label" for="textAreaExample"
-                    >Type your message</label
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <!-- NUEVO FOOTER -->
-    <div class="container footer m-0 p-0">
-      <footer class="">
-        <ul class="nav justify-content-center border-bottom">
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-muted">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-muted">Features</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-muted">FAQs</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-muted">About</a>
-          </li>
-        </ul>
-        <p class="text-center text-muted mt-2">© 2023 Tecla, Grupo 11</p>
-      </footer>
-    </div>
-    <script src="../js/buttonLikes.js"></script>
-    <script src="../js/messageNav.js"></script>
-    <script src="../js/publicaciones.js"></script>
     <script src="../js/index.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
