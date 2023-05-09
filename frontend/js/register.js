@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+gidocument.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.getElementById("register-form");
   const emailInput = document.getElementById("email-input");
   const passwordInput = document.getElementById("password-input");
