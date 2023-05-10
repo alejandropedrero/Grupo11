@@ -54,6 +54,8 @@ function editFuncion() {
     .catch((error) => {
       console.error("Error updating profile data:", error);
     });
-
-  window.location.href = "../views/profile.html";
+  
+  setTimeout(function () {
+    window.location.href = "../views/profile.html";
+  }, 500);
 }
