@@ -49,13 +49,11 @@ function editFuncion() {
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
+      }else {
+        window.location.href = "../views/profile.html";
       }
     })
     .catch((error) => {
       console.error("Error updating profile data:", error);
     });
-  
-  setTimeout(function () {
-    window.location.href = "../views/profile.html";
-  }, 500);
 }
