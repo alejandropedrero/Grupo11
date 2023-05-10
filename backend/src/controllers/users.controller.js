@@ -23,3 +23,20 @@ export const getCurrentUser = async (req, res) => {
       .json({ error: "Error occurred while fetching the profile." });
   }
 };
+
+//Function to update user data in the database
+export const updateCurrentUser = async (req, res) => {
+  try {
+    const userData = req.body; //Para hacer una request solo del json del body en edit-profile.js
+    const userId = req.params.id;
+    const [rows] = await pool.query(
+      "UPDATE users SET name = '"+userData.name+"', email = '"+userData.email+"' WHERE id = "+userId+""
+    );
+    res.status(200).json(rows[0]);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "Error occurred while updating the profile." });
+  }
+};
