@@ -26,7 +26,6 @@ fetch(`http://localhost:3000/users/${currentUserId}`, {
     console.error("Error fetching profile data:", error);
   });
 
-
 const editButton = document.getElementById("update-button");
 editButton.addEventListener("click", editFuncion);
 
@@ -34,25 +33,27 @@ function editFuncion() {
   const profileNameElements = document.getElementById("profile-name");
   const profileEmailElements = document.getElementById("profile-email");
 
-const userInputData = {
-  name: profileNameElements.value,
-  email: profileEmailElements.value,
-};
+  const userInputData = {
+    name: profileNameElements.value,
+    email: profileEmailElements.value,
+  };
 
-fetch(`http://localhost:3000/users/${currentUserId}`, {
-  method: "PATCH",
-  headers: {
-    "Content-Type": "application/json",
-    "X-User-Id": currentUserId,
-  },
-  body: JSON.stringify(userInputData),
-})
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+  fetch(`http://localhost:3000/users/${currentUserId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "X-User-Id": currentUserId,
+    },
+    body: JSON.stringify(userInputData),
   })
-  .catch((error) => {
-    console.error("Error updating profile data:", error);
-  });
-};
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+    })
+    .catch((error) => {
+      console.error("Error updating profile data:", error);
+    });
+
+  window.location.href = "../views/profile.html";
+}
