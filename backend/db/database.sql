@@ -31,8 +31,8 @@ CREATE TABLE posts (
     user_id INT NOT NULL,
     text VARCHAR(280) NOT NULL,
     post_date DATETIME NOT NULL,
-    num_likes INT NOT NULL,
-    num_comments INT NOT NULL,
+    num_likes INT NOT NULL DEFAULT 0,
+    num_comments INT NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
@@ -57,17 +57,6 @@ CREATE TABLE messages (
     PRIMARY KEY (id),
     FOREIGN KEY (sender_id) REFERENCES users(id),
     FOREIGN KEY (recipient_id) REFERENCES users(id)
-);
-
-CREATE TABLE events (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    event_date DATETIME NOT NULL,
-    location VARCHAR(100) NOT NULL,
-    description VARCHAR(280) NOT NULL,
-    creator_id INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (creator_id) REFERENCES users(id)
 );
 
 CREATE TABLE notifications (

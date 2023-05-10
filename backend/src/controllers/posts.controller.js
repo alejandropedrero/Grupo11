@@ -1,20 +1,35 @@
 import { pool } from "../db.js";
+import { format } from "date-fns";
+
+export const getPosts = async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM posts");
+    res.status(200).json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 export const createPost = async (req, res) => {
   try {
-    const { userId, text } = req.body;
-    const [result] = await pool.query(
-      "INSERT INTO posts (user_id, text) VALUES (?, ?)",
-      [userId, text]
+    const { text } = req.body;
+    const user_id = req.headers["x-user-id"];
+    const post_date = format(new Date(), "yyyy-MM-dd HH:mm:ss");
+    await pool.query(
+      "INSERT INTO posts (user_id, text, post_date) VALUES (?, ?, ?)",
+      [user_id, text, post_date]
     );
-    const postId = result.insertId;
-    const [rows] = await pool.query(
-      "SELECT p.id, p.text, p.created_at, u.name, u.profile_picture FROM posts p INNER JOIN users u ON p.user_id = u.id WHERE p.id = ?",
-      [postId]
-    );
-    res.status(201).json(rows[0]);
+    const result = await pool.query("SELECT LAST_INSERT_ID() as id");
+    const postId = result[0].id;
+    res.status(201).json({
+      message: "Post created successfully",
+      postId,
+      text,
+      post_date,
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error occurred while creating the post." });
+    res.status(500).json({ message: "Internal server error" });
   }
 };
