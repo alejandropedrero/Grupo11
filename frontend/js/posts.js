@@ -1,57 +1,60 @@
-const postForm = document.getElementById("post-form");
+checkAuth();
 
-postForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+function checkAuth() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "../views/login.html";
+  }
+}
 
-  const userId = localStorage.getItem("userId");
-  const comment = document.getElementById("comment").value;
+const formatDate = (dateString) => {
+  const postDate = new Date(dateString);
+  const formattedDate = postDate.toLocaleString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: true,
+  });
+  return formattedDate;
+};
 
-  fetch("http://localhost:3000/posts", {
+const appendPost = (post) => {
+  const container = document.getElementById("publicaciones-container");
+  const postElement = document.createElement("div");
+  postElement.className = "card my-2";
+  postElement.innerHTML = `
+    <div class="card-body">
+      <p class="card-text">${post.text}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <small class="text-muted">${post.num_likes} likes</small>
+        <small class="text-muted">${post.num_comments} comments</small>
+        <small class="text-muted">${formatDate(post.post_date)}</small>
+      </div>
+    </div>
+  `;
+  container.appendChild(postElement);
+};
+
+const handlePost = async () => {
+  const text = document.getElementById("comment").value;
+  const response = await fetch("http://localhost:3000/posts", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-User-Id": userId,
+      "x-user-id": localStorage.getItem("userId"),
     },
-    body: JSON.stringify({
-      comment,
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const postContainer = document.getElementById("publicaciones-container");
+    body: JSON.stringify({ text }),
+  });
+  if (response.ok) {
+    const post = await response.json();
+    appendPost(post);
+  } else {
+    console.error(response.statusText);
+  }
+};
 
-      const postElement = document.createElement("div");
-      postElement.classList.add("post");
-
-      const postHeaderElement = document.createElement("div");
-      postHeaderElement.classList.add("post-header");
-      postHeaderElement.innerHTML = `
-          <img
-            src="http://example.com/profile/${data.username}.jpg"
-            alt="${data.username}"
-            class="user-profile-picture"
-          >
-          <h4>${data.username}</h4>
-          <p>${data.timestamp}</p>
-        `;
-      postElement.appendChild(postHeaderElement);
-
-      const postBodyElement = document.createElement("div");
-      postBodyElement.classList.add("post-body");
-      postBodyElement.innerHTML = `
-          <p>${data.text}</p>
-        `;
-      postElement.appendChild(postBodyElement);
-
-      postContainer.prepend(postElement);
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Error creating post:", error);
-    });
-});
+const postButton = document.getElementById("post-button");
+postButton.addEventListener("click", handlePost);
