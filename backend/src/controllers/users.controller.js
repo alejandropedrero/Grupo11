@@ -1,7 +1,9 @@
 import { pool } from "../db.js";
 
 export const getUsers = async (req, res) => {
-  const [rows] = await pool.query("SELECT id, name, email FROM users");
+  const [rows] = await pool.query(
+    "SELECT id, name, email, profile_picture FROM users"
+  );
   res.json(rows);
 };
 
@@ -30,7 +32,13 @@ export const updateCurrentUser = async (req, res) => {
     const userData = req.body; //Para hacer una request solo del json del body en edit-profile.js
     const userId = req.params.id;
     const [rows] = await pool.query(
-      "UPDATE users SET name = '"+userData.name+"', email = '"+userData.email+"' WHERE id = "+userId+""
+      "UPDATE users SET name = '" +
+        userData.name +
+        "', email = '" +
+        userData.email +
+        "' WHERE id = " +
+        userId +
+        ""
     );
     res.status(200).json(rows[0]);
   } catch (error) {
