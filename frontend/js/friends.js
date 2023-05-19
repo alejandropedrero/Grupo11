@@ -13,7 +13,7 @@ function fetchCurrentUser() {
   // Obtener imagen de perfil del propio usuario en la navbar
   const userId = localStorage.getItem("userId");
 
-  fetch(`http://localhost:3000/users/${userId}`, {
+  fetch(`http://localhost:3001/users/${userId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -46,7 +46,7 @@ function fetchFriends() {
 
   const userId = localStorage.getItem("userId");
 
-  fetch(`http://localhost:3000/friends`, {
+  fetch(`http://localhost:3001/friends`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

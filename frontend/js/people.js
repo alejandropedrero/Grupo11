@@ -18,7 +18,7 @@ function fetchPeople() {
 
   const userId = localStorage.getItem("userId");
 
-  fetch(`http://localhost:3000/people`, {
+  fetch(`http://localhost:3001/people`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ function searchPeople() {
 function fetchCurrentUser() {
   // Obtener imagen de perfil del propio usuario en la navbar
   const userId = localStorage.getItem("userId");
-  fetch(`http://localhost:3000/users/${userId}`, {
+  fetch(`http://localhost:3001/users/${userId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -100,7 +100,7 @@ function addFriend() {
         button.parentElement.querySelector(".persona-name").textContent;
 
       try {
-        const response = await fetch("http://localhost:3000/friends", {
+        const response = await fetch("http://localhost:3001/friends", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

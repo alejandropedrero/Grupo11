@@ -12,7 +12,7 @@ function checkAuth() {
 function fetchCurrentUser() {
   const userId = localStorage.getItem("userId");
 
-  fetch(`http://localhost:3000/users/${userId}`, {
+  fetch(`http://localhost:3001/users/${userId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

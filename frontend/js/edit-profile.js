@@ -1,6 +1,6 @@
 const currentUserId = localStorage.getItem("userId");
 
-fetch(`http://localhost:3000/users/${currentUserId}`, {
+fetch(`http://localhost:3001/users/${currentUserId}`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -38,7 +38,7 @@ function editFuncion() {
     email: profileEmailElements.value,
   };
 
-  fetch(`http://localhost:3000/users/${currentUserId}`, {
+  fetch(`http://localhost:3001/users/${currentUserId}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

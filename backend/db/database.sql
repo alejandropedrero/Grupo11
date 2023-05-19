@@ -69,6 +69,13 @@ CREATE TABLE notifications (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+CREATE TABLE ticket (
+    id INT NOT NULL AUTO_INCREMENT,
+    titulo VARCHAR(280),
+    consulta TEXT,
+    PRIMARY KEY (id)
+);
+
 
 INSERT INTO users (name, email, password, profile_picture)
 VALUES ('David', 'Dxworld@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "frodo.jpg");
