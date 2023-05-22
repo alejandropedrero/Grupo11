@@ -9,7 +9,7 @@ export const createTicket = async (req, res) => {
     }
 
     await pool.query(
-      "INSERT INTO ticket (titulo, consulta) VALUES (?, ?)",
+      "INSERT INTO ticket (titulo, consulta) VALUES (?, ?) ",
       [titulo, consulta]
     );
 

@@ -1,19 +1,11 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "../App.css";
-<<<<<<< HEAD
-=======
-import logo192 from "../logo192.png";
->>>>>>> c5c9815d49ccd669ecafe7e121be1a96203c569b
 
 export function CardFriend() {
   return (
     <Card className="card-friend text-center">
-<<<<<<< HEAD
       <Card.Img variant="top"/>
-=======
-      <Card.Img variant="top" src={logo192} />
->>>>>>> c5c9815d49ccd669ecafe7e121be1a96203c569b
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
         <Card.Text>
