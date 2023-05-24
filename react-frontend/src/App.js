@@ -1,12 +1,9 @@
-import Navbar from "./components/Navbar";
-import  TicketForm  from "./components/TicketForm";
+import  Login  from "./components/Login";
 
 function App() {
   return (
     <div classNam="container">
-    < Navbar />
-    < TicketForm />
-    
+
     </div>
   );
 }
