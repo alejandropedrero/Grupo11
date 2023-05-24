@@ -1,12 +1,12 @@
 import Navbar from "./components/Navbar";
-import TicketForm from "./components/TicketForm";
-import SearchUsers from "./components/SearchUsers";
-import Register from "./components/Register";
+import  TicketForm  from "./components/TicketForm";
 
 function App() {
   return (
     <div classNam="container">
-      <SearchUsers />
+    < Navbar />
+    < TicketForm />
+    
     </div>
   );
 }
