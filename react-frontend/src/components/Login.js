@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import React from "react";
-// import { Link } from "react-router-dom";
-import "../App.css"
+import { Link, useNavigate } from "react-router-dom";
+import "../App.css";
 
 export default function LoginForm() {
   const {
@@ -9,6 +9,13 @@ export default function LoginForm() {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  //Constantes para el botón de 'inicia sesión'
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/search-users");
+  };
+  //Acaba aquí
 
   const onSubmit = async (data) => {
     console.log(JSON.stringify(data));
@@ -82,13 +89,18 @@ export default function LoginForm() {
                   </label>
                 </div>
                 <div className="input-field">
-                  <button className="submit" id="submitBtn">
+                  <button
+                    onClick={handleClick}
+                    className="submit"
+                    id="submitBtn"
+                  >
                     Inicia sesión
                   </button>
                 </div>
                 <div className="signin">
                   <span>
-                    ¿No tienes una cuenta?
+                    ¿No tienes una cuenta?{" "}
+                    <Link to="/register">Regístrate</Link>
                   </span>
                 </div>
 

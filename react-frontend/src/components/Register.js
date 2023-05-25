@@ -1,11 +1,21 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../Register.css";
+
+
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState("");
+
+  //Constantes para el botón de 'crear cuenta nueva'
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+}
+  //Acaba aquí
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -94,14 +104,14 @@ function Register() {
                 </div>
                 <span id="name-error" className="error"></span>
                 <div className="input-field">
-                  <button className="submit" id="submitBtn">
+                  <button onClick={handleClick} className="submit" id="submitBtn">
                     Crear cuenta nueva
                   </button>
                 </div>
                 <div className="signin">
-                  <span>
-                    ¿Ya tienes una cuenta?
-                    <a href="login.html">Inicia sesión</a>
+                <span>
+                    ¿Ya tienes una cuenta?{" "}
+                    <Link to="/">Inicia sesión</Link>
                   </span>
                 </div>
               </form>
