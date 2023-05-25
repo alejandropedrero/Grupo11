@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
 /* Tarjeta amigo */
 .card-friend {
   width: 18rem;
@@ -15,30 +17,31 @@
   border-radius: 0.5rem;
 }
 
-/* Login */
-body {
+/* Login + Register */
+.login-form,
+.register-form {
   font-family: "Poppins", sans-serif;
   background-color: #ececec;
 }
 
-.wrapper {
+.wrapper-lr {
   background: #ececec;
   padding: 0 20px 0 20px;
 }
 
-.main {
+.main-lr {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-h1 {
+.h1-lr {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-.row {
+.row-lr {
   width: 900px;
   height: 550px;
   border-radius: 10px;
@@ -46,7 +49,7 @@ h1 {
   box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
-.side-image {
+.side-image-login {
   background-image: url("../public/login-background-img.jpg");
   background-position: -150px;
   background-size: cover;
@@ -55,56 +58,41 @@ h1 {
   border-radius: 10px 0 0 10px;
 }
 
-img {
-  width: 35px;
-  position: absolute;
-  top: 30px;
-  left: 30px;
+.side-image-register {
+  background-image: url("../public/register-background-img.jpg");
+  background-position: -100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 10px 0 0 10px;
 }
 
-.text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.text p {
-  color: #fff;
-  font-size: 18px;
-}
-
-i {
-  font-weight: 400;
-  font-size: 15px;
-}
-
-.right {
+.right-lr {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 
-.input-box {
+.input-box-lr {
   width: 330px;
   box-sizing: border-box;
 }
 
-.input-box header {
+.input-box-lr header {
   font-weight: 700;
   text-align: center;
   margin-bottom: 45px;
 }
 
-.input-field {
+.input-field-lr {
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 0 10px 0 10px;
 }
 
-.input {
+.input-lr {
   height: 45px;
   width: 100%;
   background: transparent;
@@ -115,7 +103,7 @@ i {
   color: #40414a;
 }
 
-.input-box .input-field label {
+.input-box-lr .input-field-lr label {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -123,23 +111,23 @@ i {
   transition: 0.5s;
 }
 
-.input-field .input:focus ~ label {
+.input-field-lr .input-lr:focus ~ label {
   top: -10px;
   font-size: 13px;
 }
 
-.input-field .input:valid ~ label {
+.input-field-lr .input-lr:valid ~ label {
   top: -10px;
   font-size: 13px;
   color: #5d5076;
 }
 
-.input-field .input:focus,
-.input-field .input:valid {
+.input-field-lr .input-lr:focus,
+.input-field-lr .input-lr:valid {
   border-bottom: 1px solid #79c7c7;
 }
 
-.submit {
+.submit-lr {
   border: none;
   outline: none;
   height: 45px;
@@ -149,39 +137,30 @@ i {
   width: 100%;
 }
 
-.submit:hover {
+.submit-lr:hover {
   background: #79c7c7;
   color: #fff;
 }
 
-.signin {
+.signin-lr {
   text-align: center;
   font-size: small;
   margin-top: 25px;
 }
 
-span a {
+.span-lr a {
   text-decoration: none;
   font-weight: 700;
   color: #79c7c7;
   transition: 0.5s;
 }
 
-span a:hover {
+.span-lr a:hover {
   color: #79c7c7;
   font-weight: 700;
 }
 
-.footer {
-  background-color: #ececec;
-  min-width: 100%;
-}
-
-footer p {
-  margin-bottom: 1rem;
-}
-
-.error {
+.error-lr {
   font-size: 12px;
   margin: -15px 0 10px 0;
   color: #be0e34;
@@ -189,29 +168,16 @@ footer p {
 }
 
 @media only screen and (max-width: 768px) {
-  .side-image {
+  .side-image-login,
+  .side-image-register {
     border-radius: 10px 10px 0 0;
     background-position: top;
   }
-  img {
-    width: 35px;
-    position: absolute;
-    top: 40px;
-    left: 47%;
-  }
-  .text {
-    position: absolute;
-    top: 70%;
-    text-align: center;
-  }
-  .text p,
-  i {
-    font-size: 17px;
-  }
+
   .row {
     max-width: 420px;
     width: 100%;
   }
 }
 
-/* Acaba Login */
+/* Acaba Login y register */
