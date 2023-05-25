@@ -40,78 +40,84 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="p-4">
-      <div className="wrapper">
-        <div className="container main">
-          <div className="row">
-            <div className="col-md-6 side-image">
-              <img src="" alt="" />
-            </div>
-            <div className="col-md-6 right">
-              <div className="input-box">
-                <header>
-                  <h1>
-                    <span className="underline">Inicia sesión</span>
-                  </h1>
-                </header>
-                {/* Form */}
-                <div className="input-field">
-                  <input
-                    type="email"
-                    className="input"
-                    id="email"
-                    name="email"
-                    autoComplete="off"
-                    {...register("email", {
-                      required: true,
-                    })}
-                  />
-                  {errors.titulo?.type === "required" && (
-                    <p style={{ color: "red" }}>Email requerido</p>
-                  )}
-                  <label htmlFor="email">Email</label>
-                </div>
-                <div className="input-field">
-                  <input
-                    type="password"
-                    className="input"
-                    id="password"
-                    name="password"
-                    {...register("password", {
-                      required: true,
-                    })}
-                  />
-                  {errors.titulo?.type === "required" && (
-                    <p style={{ color: "red" }}>Contraseña requerida</p>
-                  )}
-                  <label htmlFor="password" id="password" name="password">
-                    Contraseña
-                  </label>
-                </div>
-                <div className="input-field">
-                  <button
+    <div className="login-form">
+      <form onSubmit={handleSubmit(onSubmit)} className="p-4">
+        <div className="wrapper-lr">
+          <div className="container main-lr">
+            <div className="row row-lr">
+              <div className="col-md-6 side-image-login">
+                <img src="" alt="" />
+              </div>
+              <div className="col-md-6 right-lr">
+                <div className="input-box-lr">
+                  <header>
+                    <h1 className="h1-lr">
+                      <span className="underline span-lr">Inicia sesión</span>
+                    </h1>
+                  </header>
+                  {/* Form */}
+                  <div className="input-field-lr">
+                    <input
+                      type="email"
+                      className="input-lr"
+                      id="email"
+                      name="email"
+                      autoComplete="off"
+                      {...register("email", {
+                        required: true,
+                      })}
+                    />
+                    {errors.titulo?.type === "required" && (
+                      <p style={{ color: "red" }}>Email requerido</p>
+                    )}
+                    <label htmlFor="email">Email</label>
+                  </div>
+                  <div className="input-field-lr">
+                    <input
+                      type="password"
+                      className="input-lr"
+                      id="password"
+                      name="password"
+                      {...register("password", {
+                        required: true,
+                      })}
+                    />
+                    {errors.titulo?.type === "required" && (
+                      <p style={{ color: "red" }}>Contraseña requerida</p>
+                    )}
+                    <label htmlFor="password" id="password" name="password">
+                      Contraseña
+                    </label>
+                  </div>
+                  <div className="input-field-lr">
+                    <button
                     onClick={handleClick}
-                    className="submit"
+                    className="submit-lr"
                     id="submitBtn"
                   >
-                    Inicia sesión
-                  </button>
-                </div>
-                <div className="signin">
-                  <span>
-                    ¿No tienes una cuenta?{" "}
+                      Inicia sesión
+                    </button>
+                  </div>
+                  <div className="signin-lr">
+                    <span className="span-lr">
+                      ¿No tienes una cuenta?{" "}
+                      <a href="login.html">Inicia sesión</a>{" "}
                     <Link to="/register">Regístrate</Link>
-                  </span>
-                </div>
+                    </span>
+                  </div>
 
-                <div className="signin z-3 text-center mt-3">
-                  <span id="error-container" className="text-danger fw-bold" />
+                  <div className="signin-lr z-3 text-center mt-3">
+                    <span
+                      id="error-container"
+                      className="text-danger fw-bold span-lr"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
