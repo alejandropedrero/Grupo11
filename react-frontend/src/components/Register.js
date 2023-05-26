@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../Register.css";
+import "../App.css";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -8,12 +8,7 @@ function Register() {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
 
-  //Constantes para el botón de 'crear cuenta nueva'
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/");
-  };
-  //Acaba aquí
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,8 +31,8 @@ function Register() {
 
       if (response.ok) {
         console.log(data.message);
-        // Aquí iría la ventana modal de Sonia
-        alert("Usuario creado correctamente!");
+        // Redirect to the desired page after successful registration
+        navigate("/");
       } else {
         console.log(data.error);
         setError(data.error);
@@ -103,11 +98,7 @@ function Register() {
                   </div>
                   <span id="name-error" className="error-lr span-lr"></span>
                   <div className="input-field-lr">
-                    <button
-                      onClick={handleClick}
-                      className="submit-lr"
-                      id="submitBtn"
-                    >
+                    <button className="submit-lr" id="submitBtn">
                       Crear cuenta nueva
                     </button>
                   </div>
