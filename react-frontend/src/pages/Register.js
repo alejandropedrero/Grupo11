@@ -31,7 +31,6 @@ function Register() {
 
       if (response.ok) {
         console.log(data.message);
-        // Redirect to the desired page after successful registration
         navigate("/");
       } else {
         console.log(data.error);
@@ -104,7 +103,8 @@ function Register() {
                   </div>
                   <div className="signin-lr">
                     <span className="span-lr">
-                      ¿Ya tienes una cuenta? <Link to="/"> Inicia sesión</Link>
+                      ¿Ya tienes una cuenta?
+                      <Link to="/"> Inicia sesión</Link>
                     </span>
                   </div>
                 </form>
