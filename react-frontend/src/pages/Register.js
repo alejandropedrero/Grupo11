@@ -93,7 +93,7 @@ function Register() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
-                    <label htmlFor="name">Nombre</label>
+                    <label htmlFor="name">Nombre completo</label>
                   </div>
                   <span id="name-error" className="error-lr span-lr"></span>
                   <div className="input-field-lr">

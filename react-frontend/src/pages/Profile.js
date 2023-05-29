@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 function Profile() {
   useEffect(() => {
-    const currentUserId = localStorage.getItem('userId');
+    const userId = localStorage.getItem('userId');
 
-    fetch(`http://localhost:3001/users/${currentUserId}`, {
+    fetch(`http://localhost:3001/users/${userId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'X-User-Id': currentUserId,
+        'X-User-Id': userId,
       },
     })
       .then((response) => {
@@ -49,7 +49,7 @@ return (
         <div className="card" style={{ width: "90%" }}>
           <div className="d-flex justify-content-center align-items-center">
             <img
-              src=""
+              src={`${process.env.PUBLIC_URL}/img-users/${userId}.jpg`}
               className="card-img-top rounded-circle w-50 mt-4"
               alt="foto perfil"
             />
