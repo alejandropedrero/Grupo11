@@ -21,8 +21,8 @@ export const addFriend = async (req, res) => {
 
     const now = new Date().toISOString().slice(0, 19).replace("T", " ");
     await pool.query(
-      "INSERT INTO friends (user_id, friend_id, friendship_date) VALUES (?, ?, ?)",
-      [userId, friendId, now]
+      "INSERT INTO friends (user_id, friend_id, friendship_date, request_status) VALUES (?, ?, ?, ?)",
+      [userId, friendId, now, "accepted"]
     );
 
     res.status(200).send("Friend added.");

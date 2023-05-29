@@ -3,13 +3,13 @@ import NavbarAlt from "../components/NavbarAlt";
 import SearchBar from "../components/SearchBar";
 import "../App.css";
 
-const SearchUsers = () => {
+const SearchFriends = () => {
   const [search, setSearch] = useState("");
   const [people, setPeople] = useState([]);
   const [buttonStatuses, setButtonStatuses] = useState([]);
 
   const showData = async () => {
-    const URL = "http://localhost:3001/people";
+    const URL = "http://localhost:3001/friends";
     const response = await fetch(URL, {
       method: "GET",
       headers: {
@@ -59,7 +59,7 @@ const SearchUsers = () => {
       <SearchBar
         search={search}
         setSearch={setSearch}
-        placeholderText="Encuentra usuarios"
+        placeholderText="Busca entre tus amigos"
       />
 
       <div className="container mt-4">
@@ -86,7 +86,7 @@ const SearchUsers = () => {
                   >
                     {buttonStatuses[index] === "added"
                       ? "Añadido"
-                      : "Añadir amigo"}
+                      : "Eliminar amigo"}
                   </button>
                 </div>
               </div>
@@ -98,4 +98,4 @@ const SearchUsers = () => {
   );
 };
 
-export default SearchUsers;
+export default SearchFriends;

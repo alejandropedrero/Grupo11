@@ -5,13 +5,38 @@ USE tecladb;
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50),
     birthdate DATE,
+    linkedin VARCHAR(100),
+    time_availability VARCHAR(20),
     email VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
     city VARCHAR(100),
     country VARCHAR(100),
     profile_picture VARCHAR(100),
+    job_1 VARCHAR(50),
+    job_1_company VARCHAR(50),
+    job_1_end VARCHAR(20), 
+    job_1_start VARCHAR(20), 
+    job_2 VARCHAR(50),
+    job_2_company VARCHAR(50),
+    job_2_end VARCHAR(20),
+    job_2_start VARCHAR(20),
+    job_3 VARCHAR(50),
+    job_3_company VARCHAR(50),
+    job_3_end VARCHAR(20),
+    job_3_start VARCHAR(20),
+    education_1 VARCHAR(50),
+    education_1_institution VARCHAR(50),
+    education_1_end VARCHAR(20),
+    education_2 VARCHAR(50),
+    education_2_institution VARCHAR(50),
+    education_2_end VARCHAR(20),
+    cert_1 VARCHAR(50),
+    cert_2 VARCHAR(50),
+    lang_1 VARCHAR(50),
+    lang_2 VARCHAR(50),
+    hobby_1 VARCHAR(50),
+    hobby_2 VARCHAR(50), 
     PRIMARY KEY (id)
 );
 
@@ -20,11 +45,78 @@ CREATE TABLE friends (
     user_id INT NOT NULL,
     friend_id INT NOT NULL,
     friendship_date DATE NOT NULL,
-    request_status VARCHAR(50) NOT NULL DEFAULT 'accepted',
+    request_status VARCHAR(50),
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (friend_id) REFERENCES users(id)
 );
+
+INSERT INTO users (name, email, password)
+VALUES ('Bill', 'billkilgore@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Dale', 'dalecooper@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Indy', 'indianajones@outlook.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Terminator', 'theterminator@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Audrey', 'audreyhepburn@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Martin', 'lutherking@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Napoleón', 'bonaparte@outlook.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Bryson', 'billbryson@hotmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Alexander', 'skarsgard@hotmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Chuck', 'palahniuk@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Ingrid', 'ingridbergman@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Paul', 'paulnewman@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Aubrey', 'plaza@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Jacinto', 'jacintoanton@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Cassavetes', 'johncassavetes@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Monica', 'monicavitti@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Jordan', 'michaeljordan@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Vinícius', 'vinijr@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+
+INSERT INTO users (name, email, password)
+VALUES ('Gandhi', 'mahatmagandhi@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Velázquez', 'diegovelazquez@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Sonia', 'bueno.g.sonia@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
+
+INSERT INTO users (name, email, password)
+VALUES ('Alejandro', 'apedrerovega@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S');
 
 CREATE TABLE posts (
     id INT NOT NULL AUTO_INCREMENT,
@@ -77,18 +169,4 @@ CREATE TABLE ticket (
 );
 
 
-INSERT INTO users (name, email, password, profile_picture)
-VALUES ('David', 'Dxworld@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "frodo.jpg");
-
-INSERT INTO users (name, email, password, profile_picture)
-VALUES ('Sonia', 'bueno.g.sonia@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "mononoke.jpg");
-
-INSERT INTO users (name, email, password, profile_picture)
-VALUES ('Alejandro', 'apedrerovega@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "kodama.jpg");
-
-INSERT INTO users (name, email, password, profile_picture)
-VALUES ('Scott', 'disastercollie@gmail.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "border-collie.jpg");
-
-INSERT INTO users (name, email, password, profile_picture)
-VALUES ('Gal', 'gal@outlook.com', '$2b$10$yWbdCu.pLjmXMcbD8OS8MuwQlvY9K58J4883OFPZhASX9K0yOtV9S', "gal-gadot.webp");
 
