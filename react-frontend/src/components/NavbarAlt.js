@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 export default function NavbarAlt() {
   const [userId, setUserId] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -21,18 +24,23 @@ export default function NavbarAlt() {
       });
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+
+    navigate("/");
+  };
+
   return (
     <div className="d-flex justify-content-center">
-      <nav
-        className="navbar navbar-expand-lg rounded-3 m-3 p-3 sticky-top navbar-dark"
-        style={{ backgroundColor: "#79c7c7", width: "85%" }}
-      >
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-lg rounded-3 m-3 p-1 fw-bolder sticky-top ">
+        <div className="container-fluid ">
+          <a className="navbar-brand" href="/">
             <img
               src="logo-teclers-final.svg"
               alt="Logo Teclers"
-              width="120rem"
+              width="100rem"
+              className="navbar-logo"
             />
           </a>
 
@@ -45,34 +53,28 @@ export default function NavbarAlt() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon "></span>
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto d-flex align-items-center">
               <li className="nav-item">
                 <a
-                  className="nav-link active"
-                  style={{ color: "white" }}
+                  className="nav-link"
                   aria-current="page"
-                  href="#"
+                  href="/search-users"
                 >
                   Personas
                 </a>
               </li>
               <li className="nav-item">
-                <a
-                  className="nav-link"
-                  style={{ color: "white" }}
-                  href="/search-friends"
-                >
-                  Amigos
+                <a className="nav-link" href="/search-friends">
+                  Mis amigos
                 </a>
               </li>
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  style={{ color: "white" }}
                   href="https://tecla.academy/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -80,9 +82,9 @@ export default function NavbarAlt() {
                   Cursos
                 </a>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown ">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle d-flex align-items-center justify-content-center"
                   href="/"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -97,12 +99,16 @@ export default function NavbarAlt() {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="/">
+                    <a className="dropdown-item" href="/profile">
                       Tu Perfil
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/">
+                    <a
+                      className="dropdown-item"
+                      href="/"
+                      onClick={handleLogout}
+                    >
                       Cerrar Sesión
                     </a>
                   </li>

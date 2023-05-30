@@ -30,22 +30,24 @@ const SearchFriends = () => {
 
   useEffect(() => {
     showData();
-  }, []);
+  }, [buttonStatuses]);
 
-  const handleAddFriend = async (person, index) => {
+  const handleRemoveFriend = async (person, index) => {
     try {
-      const response = await fetch("http://localhost:3001/friends", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-User-Id": localStorage.getItem("userId"),
-        },
-        body: JSON.stringify({ name: person.name }),
-      });
+      const response = await fetch(
+        `http://localhost:3001/friends/${person.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Id": localStorage.getItem("userId"),
+          },
+        }
+      );
 
       if (response.status === 200) {
         const newButtonStatuses = [...buttonStatuses];
-        newButtonStatuses[index] = "added";
+        newButtonStatuses[index] = "removed";
         setButtonStatuses(newButtonStatuses);
       }
     } catch (error) {
@@ -77,15 +79,15 @@ const SearchFriends = () => {
                   <p className="card-text">{person.email}</p>
                   <button
                     className={`btn ${
-                      buttonStatuses[index] === "added"
-                        ? "btn-success"
+                      buttonStatuses[index] === "removed"
+                        ? "btn-danger"
                         : "btn-light"
                     }`}
-                    onClick={() => handleAddFriend(person, index)}
-                    disabled={buttonStatuses[index] === "added"}
+                    onClick={() => handleRemoveFriend(person, index)}
+                    disabled={buttonStatuses[index] === "removed"}
                   >
-                    {buttonStatuses[index] === "added"
-                      ? "Añadido"
+                    {buttonStatuses[index] === "removed"
+                      ? "Eliminado"
                       : "Eliminar amigo"}
                   </button>
                 </div>

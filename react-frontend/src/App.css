@@ -5,16 +5,55 @@
   width: 18rem;
 }
 
+/* Navbar */
+
+.navbar {
+  background-color: #79c7c7;
+  width: 85%;
+}
+
+.nav-link {
+  transition: color 0.4s ease;
+}
+
+.nav-link,
+.nav-link:active,
+.nav-link:visited {
+  color: snow;
+}
+
+.nav-link:hover {
+  color: #4d5061;
+}
+
+.dropdown-toggle:hover {
+  color: #4d5061;
+}
+
 /* Barra de búsqueda */
 .form-control:focus {
   box-shadow: none;
   outline: none;
 }
 
+.input-group {
+  transition: box-shadow 0.4s, border-radius 0.4s;
+}
+
 .input-group:focus-within {
-  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(121, 199, 199, 0.5);
   outline: none;
   border-radius: 0.5rem;
+}
+
+.input-group:focus-within {
+  box-shadow: 0 0 0 0.25rem rgba(121, 199, 199, 0.5);
+  outline: none;
+  border-radius: 0.5rem;
+}
+
+.input-group:focus-within .bi-search {
+  color: #4c9999;
 }
 
 /* Login + Register */

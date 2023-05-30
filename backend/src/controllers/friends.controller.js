@@ -32,6 +32,34 @@ export const addFriend = async (req, res) => {
   }
 };
 
+export const deleteFriend = async (req, res) => {
+  try {
+    const userId = req.headers["x-user-id"];
+    const friendId = req.params.id;
+
+    // Check if the friendship exists
+    const [existingRows] = await pool.query(
+      "SELECT * FROM friends WHERE user_id = ? AND friend_id = ?",
+      [userId, friendId]
+    );
+
+    if (existingRows.length === 0) {
+      res.status(404).send("Friendship not found.");
+      return;
+    }
+
+    await pool.query(
+      "DELETE FROM friends WHERE user_id = ? AND friend_id = ?",
+      [userId, friendId]
+    );
+
+    res.status(200).send("Friend removed.");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error occurred while removing friend.");
+  }
+};
+
 export const getFriends = async (req, res) => {
   try {
     const userId = req.headers["x-user-id"];

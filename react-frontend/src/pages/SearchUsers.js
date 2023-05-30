@@ -22,6 +22,25 @@ const SearchUsers = () => {
     setButtonStatuses(new Array(data.length).fill("unadded"));
   };
 
+  const fetchFriendStatuses = async () => {
+    const URL = "http://localhost:3001/friends";
+    const response = await fetch(URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-User-Id": localStorage.getItem("userId"),
+      },
+    });
+    const friends = await response.json();
+    const newButtonStatuses = buttonStatuses.map((status, index) => {
+      const friend = friends.find(
+        (friend) => friend.name === people[index].name
+      );
+      return friend ? "added" : "unadded";
+    });
+    setButtonStatuses(newButtonStatuses);
+  };
+
   const results = !search
     ? people
     : people.filter((person) =>
@@ -31,6 +50,10 @@ const SearchUsers = () => {
   useEffect(() => {
     showData();
   }, []);
+
+  useEffect(() => {
+    fetchFriendStatuses();
+  }, [people]);
 
   const handleAddFriend = async (person, index) => {
     try {
