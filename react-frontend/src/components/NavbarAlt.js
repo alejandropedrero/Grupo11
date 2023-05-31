@@ -35,7 +35,7 @@ export default function NavbarAlt() {
     <div className="d-flex justify-content-center">
       <nav className="navbar navbar-expand-lg rounded-3 m-3 p-1 fw-bolder sticky-top ">
         <div className="container-fluid ">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/posts">
             <img
               src="logo-teclers-final.svg"
               alt="Logo Teclers"
@@ -58,6 +58,11 @@ export default function NavbarAlt() {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto d-flex align-items-center">
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="/posts">
+                  Inicio
+                </a>
+              </li>
               <li className="nav-item">
                 <a
                   className="nav-link"

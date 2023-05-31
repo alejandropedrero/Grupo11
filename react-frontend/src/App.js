@@ -9,6 +9,7 @@ import SearchFriends from "./pages/SearchFriends";
 import TicketForm from "./pages/TicketForm";
 import Profile from "./pages/Profile";
 import EditableProfile from "./pages/EditableProfile";
+import Posts from "./pages/Posts";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/posts" element={<Posts />} />W
         <Route path="/search-users" element={<SearchUsers />} />
         <Route path="/search-friends" element={<SearchFriends />} />
         <Route path="/ticket-form" element={<TicketForm />} />

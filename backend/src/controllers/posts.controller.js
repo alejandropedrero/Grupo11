@@ -3,8 +3,21 @@ import { format } from "date-fns";
 
 export const getPosts = async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM posts");
-    res.status(200).json(result.rows);
+    const query = `
+      SELECT
+        posts.*,
+        users.name AS userName,
+        DATE_FORMAT(posts.post_date, '%d-%m-%Y') AS formatted_date
+      FROM
+        posts
+      INNER JOIN
+        users ON posts.user_id = users.id
+      ORDER BY
+        posts.post_date DESC
+    `;
+
+    const [rows] = await pool.query(query);
+    res.status(200).json(rows);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
@@ -16,6 +29,13 @@ export const createPost = async (req, res) => {
     const { text } = req.body;
     const user_id = req.headers["x-user-id"];
     const post_date = format(new Date(), "yyyy-MM-dd HH:mm:ss");
+
+    const [userResult, _] = await pool.query(
+      "SELECT name FROM users WHERE id = ?",
+      [user_id]
+    );
+    const userName = userResult[0].name;
+
     await pool.query(
       "INSERT INTO posts (user_id, text, post_date) VALUES (?, ?, ?)",
       [user_id, text, post_date]
@@ -27,6 +47,7 @@ export const createPost = async (req, res) => {
       postId,
       text,
       post_date,
+      userName,
     });
   } catch (error) {
     console.error(error);

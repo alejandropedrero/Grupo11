@@ -8,37 +8,36 @@ const SearchUsers = () => {
   const [people, setPeople] = useState([]);
   const [buttonStatuses, setButtonStatuses] = useState([]);
 
-  const showData = async () => {
-    const URL = "http://localhost:3001/people";
-    const response = await fetch(URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "X-User-Id": localStorage.getItem("userId"),
-      },
-    });
-    const data = await response.json();
-    setPeople(data);
-    setButtonStatuses(new Array(data.length).fill("unadded"));
-  };
+  const fetchData = async () => {
+    try {
+      const peopleResponse = await fetch("http://localhost:3001/people", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-User-Id": localStorage.getItem("userId"),
+        },
+      });
+      const peopleData = await peopleResponse.json();
+      setPeople(peopleData);
 
-  const fetchFriendStatuses = async () => {
-    const URL = "http://localhost:3001/friends";
-    const response = await fetch(URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "X-User-Id": localStorage.getItem("userId"),
-      },
-    });
-    const friends = await response.json();
-    const newButtonStatuses = buttonStatuses.map((status, index) => {
-      const friend = friends.find(
-        (friend) => friend.name === people[index].name
-      );
-      return friend ? "added" : "unadded";
-    });
-    setButtonStatuses(newButtonStatuses);
+      const friendsResponse = await fetch("http://localhost:3001/friends", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-User-Id": localStorage.getItem("userId"),
+        },
+      });
+      const friendsData = await friendsResponse.json();
+      const newButtonStatuses = peopleData.map((person) => {
+        const friend = friendsData.find(
+          (friend) => friend.name === person.name
+        );
+        return friend ? "added" : "unadded";
+      });
+      setButtonStatuses(newButtonStatuses);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const results = !search
@@ -48,12 +47,8 @@ const SearchUsers = () => {
       );
 
   useEffect(() => {
-    showData();
+    fetchData();
   }, []);
-
-  useEffect(() => {
-    fetchFriendStatuses();
-  }, [people]);
 
   const handleAddFriend = async (person, index) => {
     try {
