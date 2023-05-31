@@ -32,11 +32,8 @@ export default function TicketForm() {
           className="row p-2 text-white"
           style={{ backgroundColor: "palevioletred" }}
         >
-          <div className="col-lg-11">
+          <div className="col-lg-12">
             <h3>¿Necesitas ayuda?</h3>
-          </div>
-          <div className="col-lg-1">
-            <h3>x</h3>
           </div>
         </div>
         <div className="m-3">
@@ -47,7 +44,7 @@ export default function TicketForm() {
             type="text"
             id="titulo"
             className="form-control"
-            placeholder="Sintetice su idea"
+            placeholder="Sintetiza tu idea"
             {...register("titulo", {
               required: true
             })}
