@@ -8,7 +8,6 @@ import SearchUsers from "./pages/SearchUsers";
 import SearchFriends from "./pages/SearchFriends";
 import TicketForm from "./pages/TicketForm";
 import Profile from "./pages/Profile";
-import EditableProfile from "./pages/EditableProfile";
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
         <Route path="/search-friends" element={<SearchFriends />} />
         <Route path="/ticket-form" element={<TicketForm />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/editable-profile" element={<EditableProfile />} />
       </Routes>
     </Router>
   );

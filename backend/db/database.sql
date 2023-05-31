@@ -5,7 +5,7 @@ USE tecladb;
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    birthdate DATE,
+    birthdate VARCHAR(50),
     linkedin VARCHAR(100),
     time_availability VARCHAR(20),
     email VARCHAR(100) NOT NULL,
