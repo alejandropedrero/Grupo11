@@ -17,7 +17,12 @@ export const getCurrentUser = async (req, res) => {
     if (!rows.length) {
       return res.status(404).json({ error: "User not found" });
     }
-    res.status(200).json(rows[0]);
+
+    const user = rows[0];
+    const imageUrl = `/img-users/${user.profile_picture}`;
+    user.imageUrl = imageUrl;
+
+    res.status(200).json(user);
   } catch (error) {
     console.error(error);
     res
@@ -30,7 +35,7 @@ export const getCurrentUser = async (req, res) => {
 export const updateCurrentUser = async (req, res) => {
   try {
     const userData = req.body; //Para hacer una request solo del json del body
-    console.log(req.body) 
+    console.log(req.body);
     const userId = req.params.id;
     const [rows] = await pool.query(
       "UPDATE users SET name = '" +

@@ -30,7 +30,7 @@ function LoginForm() {
         const { token, userId } = await response.json();
         localStorage.setItem("token", token);
         localStorage.setItem("userId", userId);
-        navigate("/search-users");
+        navigate("/posts");
       } else {
         const errorMessage = await response.text();
         console.error(errorMessage);

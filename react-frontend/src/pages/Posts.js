@@ -5,6 +5,7 @@ import "../App.css";
 
 const Posts = () => {
   const [userId, setUserId] = useState("");
+  const [userProfilePicture, setUserProfilePicture] = useState("");
   const [postText, setPostText] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -24,73 +25,101 @@ const Posts = () => {
   };
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    fetch(`http://localhost:3001/users/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "X-User-Id": userId,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchUserData = async () => {
+      try {
+        const userId = localStorage.getItem("userId");
+        const userResponse = await fetch(
+          `http://localhost:3001/users/${userId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "X-User-Id": userId,
+            },
+          }
+        );
+        const userData = await userResponse.json();
         setUserId(userId);
-      })
-      .catch((error) => {
+        setUserProfilePicture(userData.profile_picture);
+      } catch (error) {
         console.error("Error fetching user data:", error);
-      });
+      }
+    };
 
-    fetch("http://localhost:3001/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const formattedPosts = data.map((post) => ({
-          ...post,
-          post_date: formatDate(post.post_date),
-        }));
+    const fetchPosts = async () => {
+      try {
+        const postsResponse = await fetch("http://localhost:3001/posts", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const postsData = await postsResponse.json();
+        const formattedPosts = await Promise.all(
+          postsData.map(async (post) => {
+            const userResponse = await fetch(
+              `http://localhost:3001/users/${post.user_id}`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const userData = await userResponse.json();
+            return {
+              ...post,
+              post_date: formatDate(post.post_date),
+              imageUrl: userData.profile_picture,
+            };
+          })
+        );
         setPosts(formattedPosts);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching posts:", error);
-      });
+      }
+    };
+
+    fetchUserData();
+    fetchPosts();
   }, []);
 
   const handlePostTextChange = (event) => {
     setPostText(event.target.value);
   };
 
-  const handlePostSubmit = () => {
-    const requestBody = {
-      text: postText,
-    };
+  const handlePostSubmit = async () => {
+    try {
+      const requestBody = {
+        text: postText,
+      };
 
-    fetch("http://localhost:3001/posts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-User-Id": userId,
-      },
-      body: JSON.stringify(requestBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const newPost = {
-          id: data.postId,
-          text: data.text,
-          post_date: formatDate(data.post_date),
-          userName: data.userName,
-        };
-
-        setPosts((prevPosts) => [newPost, ...prevPosts]);
-        setPostText("");
-      })
-      .catch((error) => {
-        console.error("Error creating post:", error);
+      const createPostResponse = await fetch("http://localhost:3001/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-User-Id": userId,
+        },
+        body: JSON.stringify(requestBody),
       });
+
+      const createdPostData = await createPostResponse.json();
+      const newPost = {
+        id: createdPostData.id,
+        text: createdPostData.text,
+        post_date: formatDate(createdPostData.post_date),
+        userName: createdPostData.userName,
+        userId: createdPostData.user_id,
+        imageUrl: createdPostData.userProfilePicture,
+      };
+
+      setPosts((prevPosts) => [newPost, ...prevPosts]);
+      setPostText("");
+
+      setUserProfilePicture(createdPostData.userProfilePicture);
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
   };
 
   return (
@@ -161,11 +190,11 @@ const Posts = () => {
           <div className="col-md-10 col-lg-7 col-xl-8container" id="contenido">
             {/* DIV 2.1 PUBLICACIÓN */}
             <section className="container m-0 p-0 rounded-3">
-              <div className="container-fluid bg-light border rounded mb-2">
+              <div className="container-fluid bg-light border rounded mb-4">
                 <div className="d-flex align-items-center mt-3 mb-1">
                   <a href="/profile">
                     <img
-                      src={`${process.env.PUBLIC_URL}/img-users/${userId}.jpg`}
+                      src={userProfilePicture}
                       alt="User profile"
                       width="40px"
                       height="40px"
@@ -173,7 +202,7 @@ const Posts = () => {
                       title="ir a tu perfil"
                     />
                   </a>
-                  <h3 className="mb-0">Nueva publicación</h3>
+                  <h4 className="mb-0">Nueva publicación</h4>
                 </div>
                 <div className="row">
                   <div id="post">
@@ -203,10 +232,11 @@ const Posts = () => {
                   {posts.map((post) => (
                     <PostItem
                       key={post.id}
-                      id={post.id}
                       text={post.text}
                       postDate={post.post_date}
-                      userName={post.userName}
+                      userName={post.userName} // Updated prop name
+                      userId={post.user_id}
+                      imageUrl={post.imageUrl}
                     />
                   ))}
                 </div>

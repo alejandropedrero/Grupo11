@@ -4,6 +4,7 @@ import "../App.css";
 
 export default function NavbarAlt() {
   const [userId, setUserId] = useState("");
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function NavbarAlt() {
       .then((response) => response.json())
       .then((data) => {
         setUserId(userId);
+        setUser(data);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
@@ -33,8 +35,8 @@ export default function NavbarAlt() {
 
   return (
     <div className="d-flex justify-content-center">
-      <nav className="navbar navbar-expand-lg rounded-3 m-3 p-1 fw-bolder sticky-top ">
-        <div className="container-fluid ">
+      <nav className="navbar navbar-expand-lg rounded-3 m-3 p-1 fw-bolder sticky-top">
+        <div className="container-fluid">
           <a className="navbar-brand" href="/posts">
             <img
               src="logo-teclers-final.svg"
@@ -53,7 +55,7 @@ export default function NavbarAlt() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon "></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -87,7 +89,7 @@ export default function NavbarAlt() {
                   Cursos
                 </a>
               </li>
-              <li className="nav-item dropdown ">
+              <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle d-flex align-items-center justify-content-center"
                   href="/"
@@ -95,12 +97,14 @@ export default function NavbarAlt() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <img
-                    src={`${process.env.PUBLIC_URL}/img-users/${userId}.jpg`}
-                    alt="Foto perfil"
-                    className="user-profile-picture rounded-circle"
-                    width="40rem"
-                  />
+                  {user && (
+                    <img
+                      src={user.profile_picture}
+                      alt="Foto perfil"
+                      className="user-profile-picture rounded-circle"
+                      width="40rem"
+                    />
+                  )}
                 </a>
                 <ul className="dropdown-menu">
                   <li>
