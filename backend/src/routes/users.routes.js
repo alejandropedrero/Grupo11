@@ -8,7 +8,7 @@ import {
 const router = Router();
 
 router.get("/users", getUsers);
-router.get("/users/:id", getCurrentUser);
+router.get("/users/:id", getCurrentUser); //No lo estamos usando como current
 router.patch("/users/:id", updateCurrentUser);
 
 export default router;

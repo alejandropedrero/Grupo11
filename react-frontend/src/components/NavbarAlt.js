@@ -37,7 +37,7 @@ export default function NavbarAlt() {
         <div className="container-fluid ">
           <a className="navbar-brand" href="/posts">
             <img
-              src="logo-teclers-final.svg"
+              src={`${process.env.PUBLIC_URL}/logo-teclers-final.svg`}
               alt="Logo Teclers"
               width="100rem"
               className="navbar-logo"
@@ -106,6 +106,11 @@ export default function NavbarAlt() {
                   <li>
                     <a className="dropdown-item" href="/profile">
                       Tu Perfil
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="/ticket-form">
+                      Ayuda
                     </a>
                   </li>
                   <li>

@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import NavbarAlt from "../components/NavbarAlt";
 
 export default function TicketForm() {
   const { register, formState: { errors }, handleSubmit } = useForm();
@@ -26,6 +27,7 @@ export default function TicketForm() {
   };
 
   return (
+    <><NavbarAlt/>
     <form onSubmit={handleSubmit(onSubmit)} className="p-4">
       <div className="container col-lg-6 me-8 sm-6 border">
         <div
@@ -82,5 +84,6 @@ export default function TicketForm() {
         </button>
       </div>
     </form>
+    </>
   );
 }
