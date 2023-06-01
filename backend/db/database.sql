@@ -12,7 +12,7 @@ CREATE TABLE users (
     password VARCHAR(100) NOT NULL,
     city VARCHAR(100),
     country VARCHAR(100),
-    profile_picture VARCHAR(100),
+    profile_picture VARCHAR(100) ,
     job_1 VARCHAR(50),
     job_1_company VARCHAR(50),
     job_1_end VARCHAR(20), 

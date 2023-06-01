@@ -4,7 +4,8 @@ export default function ProfileData(props) {
   const userId = localStorage.getItem("userId");
   const [isEditable, setIsEditable] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
-  function editButton() {
+  function editButton(e) {
+    e.preventDefault();
     setIsEditable(true);
     setIsButtonVisible(true);
   }
@@ -19,8 +20,8 @@ export default function ProfileData(props) {
         birthdate: document.getElementById("birthdate").value,
         linkedin: document.getElementById("linkedin").value,
         time_availability: document.getElementById("time_availability").value,
-      })
-console.log(jsonbody);
+      });
+      console.log(jsonbody);
       const response = await fetch(`http://localhost:3001/users/${userId}`, {
         method: "PATCH",
         headers: {
@@ -31,12 +32,14 @@ console.log(jsonbody);
       });
 
       if (response.ok) {
-       console.log(response.ok)
+        console.log(response.ok);
       } else {
       }
     } catch (error) {
       console.error("Error al actualizar los datos del perfil:", error);
     }
+    setIsEditable(false);
+    setIsButtonVisible(false);
   };
 
   return (
@@ -47,22 +50,22 @@ console.log(jsonbody);
       <div className="card" style={{ width: "90%" }}>
         <div className="d-flex justify-content-center align-items-center">
           <img
-            src={`${process.env.PUBLIC_URL}/img-users/${userId}.jpg`}
+            src={`${process.env.PUBLIC_URL}/img-users/${props.user.id}.jpg`}
             className="card-img-top rounded-circle w-50 mt-4"
             alt="foto perfil"
           />
         </div>
         <div className="card-body">
-        <input
-                disabled={!isEditable}
-                type="name"
-                className="form-control"
-                id="name"
-                name="name"
-                aria-describedby="nombre"
-                key={props.user.name}
-                defaultValue={props.user.name}
-              />
+          <input
+            disabled={!isEditable}
+            type="name"
+            className="form-control"
+            id="name"
+            name="name"
+            aria-describedby="nombre"
+            key={props.user.name}
+            defaultValue={props.user.name}
+          />
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
@@ -209,7 +212,7 @@ console.log(jsonbody);
                 id="linkedin"
                 name="linkedin"
                 aria-describedby="linkedin"
-                placeholder="linkedin"
+                placeholder="Linkedin"
                 defaultValue={props.user.linkedin}
               />
             </div>
