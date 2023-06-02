@@ -128,6 +128,76 @@ CREATE TABLE posts (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (1, 1, 'Me encanta el olor del napalm por la mañana', '2023-06-01 15:59:00', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (2, 2, 'Hazte un regalo todos los días a ti mismo. No lo planees, no esperes por él, solo hazlo', '2023-06-01 15:59:01', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (3, 3, '¿Llamas a esto arqueología?', '2023-06-01 15:59:02', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (4, 4, 'Sayonara, baby', '2023-06-01 15:59:04', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (5, 5, 'Plantar un jardín es creer en el mañana', '2023-06-01 15:59:05', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (6, 6, 'Tengo un sueño...', '2023-06-01 15:59:06', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (7, 7, 'En la guerra como en el amor, para acabar es necesario verse de cerca', '2023-06-01 15:59:07', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (8, 8, 'Los pequeños detalles son los que realmente marcan la diferencia entre el éxito y el fracaso', '2023-06-01 15:59:08', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (9, 9, 'Como actor, lo interesante es lo que se esconde debajo de la superficie', '2023-06-01 15:59:09', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (10, 10, 'La primera regla del Club de la Lucha es: Nadie habla sobre el Club de la Lucha', '2023-06-01 15:59:10', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (11, 11, 'Para ser feliz basta con tener buena salud y mala memoria', '2023-06-01 15:59:11', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (12, 12, 'Un hombre sin enemigos es un hombre sin carácter', '2023-06-01 15:59:12', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (13, 13, 'Soy un desastre totalmente ansiosa todo el tiempo. Hay un diálogo constante en mi cerebro, y solo me recuerda todos los fracasos que he tenido, y todas las cosas que necesito hacer, y todas las cosas que no estoy haciendo lo suficientemente bien', '2023-06-01 15:59:13', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (14, 14, 'La gran aventura no sirve de nada si no sabes contarla', '2023-06-01 15:59:14', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (15, 15, 'Siempre he podido trabajar con cualquiera que no deseara éxito', '2023-06-01 15:59:15', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (16, 16, 'Las actrices, digamos feúchas, que tanto éxito tienen en Italia hoy, me lo deben a mí. Yo fui quién echó la puerta abajo', '2023-06-01 15:59:16', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (17, 17, 'El talento gana juegos, pero el trabajo en equipo y la inteligencia ganan campeonatos', '2023-06-01 15:59:17', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (18, 18, 'La luz que me guía es mucho más fuerte que los ojos que me rodean', '2023-06-01 15:59:18', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (19, 19, 'No hay camino para la paz, la paz es el camino', '2023-06-01 15:59:19', 0, 0);
+
+INSERT INTO posts (id, user_id, text, post_date, num_likes, num_comments)
+VALUES (20, 20, 'Considérate viejo cuando tengas más recuerdos que sueños', '2023-06-01 15:59:20', 0, 0);
+
+CREATE TABLE liked_posts (
+  id INT NOT NULL AUTO_INCREMENT,
+  post_id INT NOT NULL,
+  user_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (post_id) REFERENCES posts(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
 CREATE TABLE comments (
     id INT NOT NULL AUTO_INCREMENT,
     post_id INT NOT NULL,

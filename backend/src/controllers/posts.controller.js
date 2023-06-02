@@ -57,3 +57,37 @@ export const createPost = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const likePost = async (req, res) => {
+  const postId = req.params.id;
+  const userId = req.headers["x-user-id"];
+
+  try {
+    const [likedPost] = await pool.query(
+      "SELECT id FROM liked_posts WHERE post_id = ? AND user_id = ?",
+      [postId, userId]
+    );
+
+    if (likedPost.length > 0) {
+      console.log("Post already liked by the user");
+      return res
+        .status(400)
+        .json({ message: "Post already liked by the user" });
+    }
+
+    await pool.query(
+      "UPDATE posts SET num_likes = num_likes + 1 WHERE id = ?",
+      [postId]
+    );
+
+    await pool.query(
+      "INSERT INTO liked_posts (post_id, user_id) VALUES (?, ?)",
+      [postId, userId]
+    );
+
+    res.status(200).json({ message: "Post liked successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};

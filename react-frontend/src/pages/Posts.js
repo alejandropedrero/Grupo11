@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import NavbarAlt from "../components/NavbarAlt";
 import PostItem from "../components/PostItem";
 import "../App.css";
@@ -8,6 +9,10 @@ const Posts = () => {
   const [userProfilePicture, setUserProfilePicture] = useState("");
   const [postText, setPostText] = useState("");
   const [posts, setPosts] = useState([]);
+  const [quoteText, setQuoteText] = useState("");
+  const [quoteAuthor, setQuoteAuthor] = useState("");
+  const [dogImageUrl, setDogImageUrl] = useState("");
+  const [likedPosts, setLikedPosts] = useState([]);
 
   const formatDate = (dateString) => {
     const options = {
@@ -25,64 +30,93 @@ const Posts = () => {
   };
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const userId = localStorage.getItem("userId");
-        const userResponse = await fetch(
-          `http://localhost:3001/users/${userId}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "X-User-Id": userId,
-            },
-          }
-        );
-        const userData = await userResponse.json();
-        setUserId(userId);
-        setUserProfilePicture(userData.profile_picture);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
+    fetchUserData();
+    fetchPosts();
+    fetchRandomQuote();
+    fetchRandomDog();
+  }, []);
 
-    const fetchPosts = async () => {
-      try {
-        const postsResponse = await fetch("http://localhost:3001/posts", {
+  const fetchUserData = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      const userResponse = await fetch(
+        `http://localhost:3001/users/${userId}`,
+        {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            "X-User-Id": userId,
           },
-        });
-        const postsData = await postsResponse.json();
-        const formattedPosts = await Promise.all(
-          postsData.map(async (post) => {
-            const userResponse = await fetch(
-              `http://localhost:3001/users/${post.user_id}`,
-              {
-                method: "GET",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-            const userData = await userResponse.json();
-            return {
-              ...post,
-              post_date: formatDate(post.post_date),
-              imageUrl: userData.profile_picture,
-            };
-          })
-        );
-        setPosts(formattedPosts);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    };
+        }
+      );
+      const userData = await userResponse.json();
+      setUserId(userId);
+      setUserProfilePicture(userData.profile_picture);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
 
-    fetchUserData();
-    fetchPosts();
-  }, []);
+  const fetchPosts = async () => {
+    try {
+      const postsResponse = await fetch("http://localhost:3001/posts", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const postsData = await postsResponse.json();
+
+      const formattedPosts = await Promise.all(
+        postsData.map(async (post) => {
+          const userResponse = await fetch(
+            `http://localhost:3001/users/${post.user_id}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const userData = await userResponse.json();
+
+          return {
+            ...post,
+            post_date: formatDate(post.post_date),
+            userName: userData.name,
+            imageUrl: userData.profile_picture,
+          };
+        })
+      );
+
+      setPosts(formattedPosts);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
+
+  const fetchRandomQuote = async () => {
+    try {
+      const response = await axios.get("https://api.quotable.io/random");
+      const { content, author } = response.data;
+      setQuoteText(content);
+      setQuoteAuthor(author);
+    } catch (error) {
+      console.error("Error fetching random quote:", error);
+    }
+  };
+
+  const fetchRandomDog = async () => {
+    try {
+      const response = await axios.get(
+        "https://dog.ceo/api/breeds/image/random"
+      );
+      const { message } = response.data;
+      setDogImageUrl(message);
+    } catch (error) {
+      console.error("Error fetching random dog:", error);
+    }
+  };
 
   const handlePostTextChange = (event) => {
     setPostText(event.target.value);
@@ -104,21 +138,69 @@ const Posts = () => {
       });
 
       const createdPostData = await createPostResponse.json();
+
+      const userResponse = await fetch(
+        `http://localhost:3001/users/${userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const userData = await userResponse.json();
+
       const newPost = {
         id: createdPostData.id,
-        text: createdPostData.text,
+        user_id: userId,
+        text: postText,
         post_date: formatDate(createdPostData.post_date),
-        userName: createdPostData.userName,
-        userId: createdPostData.user_id,
-        imageUrl: createdPostData.userProfilePicture,
+        userName: userData.name,
+        imageUrl: userProfilePicture,
+        num_likes: 0,
       };
 
       setPosts((prevPosts) => [newPost, ...prevPosts]);
       setPostText("");
-
-      setUserProfilePicture(createdPostData.userProfilePicture);
     } catch (error) {
       console.error("Error creating post:", error);
+    }
+  };
+
+  const handleQuoteButtonClick = () => {
+    fetchRandomQuote();
+  };
+
+  const handleDogButtonClick = () => {
+    fetchRandomDog();
+  };
+
+  const handleLike = async (postId) => {
+    if (likedPosts.includes(postId)) {
+      return;
+    }
+
+    try {
+      const userId = localStorage.getItem("userId");
+      const response = await fetch(
+        `http://localhost:3001/posts/${postId}/like`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Id": userId,
+          },
+        }
+      );
+
+      if (response.ok) {
+        setLikedPosts((prevLikedPosts) => [...prevLikedPosts, postId]);
+        fetchPosts();
+      } else {
+        console.error("Error liking post:", response.status);
+      }
+    } catch (error) {
+      console.error("Error liking post:", error);
     }
   };
 
@@ -132,62 +214,34 @@ const Posts = () => {
               Descubre qué postean los usuarios
             </h1>
             <p className="lead my-3">
-              Quizá no sea nada interesante, o tal vez te sorprenda
+              Tal vez te sorprenda, o quizá no sea nada interesante
             </p>
           </div>
           <div className="col d-none d-lg-block">
             <img src="cover-4.png" alt="Conecta" className="img-fluid" />
           </div>
         </div>
-        {/* GRID BOOTSTRAP APLICADO PARA EL CONTENIDO PRINCIPAL */}
+        {/* Main */}
         <div className="row container m-0 p-0">
-          {/* DIV 1 - IZQUIERDA */}
-          <div className="col col-md-1 col-lg-2 d-none d-md-block p-0 ms-auto">
-            {/* DIV 1.1 */}
-            <div className="d-flex flex-column justify-content-center align-items-center h-20 p-lg-3 mb-3 border rounded-3">
-              <h3>Explora</h3>
-              <div className="row d-flex justify-content-center align-items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-brand-youtube col-lg-6 p-0"
-                  width={48}
-                  height={48}
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="#79C7C7"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <rect x={3} y={5} width={18} height={14} rx={4} />
-                  <path d="M10 9l5 3l-5 3z" />
-                </svg>
-                <div className="col-6 p-lg-2 d-none d-lg-block">Tutoriales</div>
-              </div>
-              <div className="row d-flex justify-content-center align-items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-brand-youtube col-lg-6 p-0"
-                  width={48}
-                  height={48}
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="#79C7C7"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <rect x={3} y={5} width={18} height={14} rx={4} />
-                  <path d="M10 9l5 3l-5 3z" />
-                </svg>
-                <div className="col-6 p-lg-2 d-none d-lg-block">Exámenes</div>
-              </div>
+          {/* Div Izquierda - Fetch Random Quote */}
+          <div className="card col col-md-1 col-lg-2 d-none d-md-block p-0 ms-auto custom-card">
+            <div className="card-body">
+              <h5 className="card-title">Frase del día</h5>
+              <h6 className="card-subtitle mb-2 text-body-secondary quote-author">
+                {quoteAuthor}
+              </h6>
+              <p className="card-text quote-text text-muted">{quoteText}</p>
+              <button
+                className="card-link quote-generator btn btn-outline-dark small"
+                onClick={handleQuoteButtonClick}
+              >
+                Dame otra
+              </button>
             </div>
           </div>
+
           {/* DIV 2 - MEDIO */}
-          <div className="col-md-10 col-lg-7 col-xl-8container" id="contenido">
+          <div className="col-md-10 col-lg-7 col-xl-8 container" id="contenido">
             {/* DIV 2.1 PUBLICACIÓN */}
             <section className="container m-0 p-0 rounded-3">
               <div className="container-fluid bg-light border rounded mb-4">
@@ -234,9 +288,12 @@ const Posts = () => {
                       key={post.id}
                       text={post.text}
                       postDate={post.post_date}
-                      userName={post.userName} // Updated prop name
+                      userName={post.userName}
                       userId={post.user_id}
                       imageUrl={post.imageUrl}
+                      numLikes={post.num_likes}
+                      handleLike={() => handleLike(post.id)}
+                      liked={likedPosts.includes(post.id)}
                     />
                   ))}
                 </div>
@@ -244,41 +301,22 @@ const Posts = () => {
             </section>
           </div>
           {/* DIV 3 - DERECHA */}
-          <div className="col d-none d-lg-block p-0">
-            <div className="h-20 p-3 border rounded-3">
-              <div className="titulos">
-                <h3>Red</h3>
-              </div>
-              <div className="d-flex mb-2">
+          <div className="card col col-md-1 col-lg-2 d-none d-md-block p-0 ms-auto custom-card">
+            <div className="card-body d-flex flex-column align-items-center">
+              <h5 className="card-title">Perro del día</h5>
+              <div className="image-wrapper">
                 <img
-                  src="../img/gal-gadot.webp"
-                  alt="Foto Gal Gadot"
-                  width="50px"
-                  height="50px"
-                  className="rounded-5"
+                  src={dogImageUrl}
+                  alt="Random Dog"
+                  className="card-img-top mb-4"
                 />
-                <p className="my-auto ms-2">Gal Gadot</p>
               </div>
-              <div className="d-flex mb-2">
-                <img
-                  src="../img/frodo.jpg"
-                  alt="Foto de Lucia"
-                  width="50px"
-                  height="50px"
-                  className="rounded-5"
-                />
-                <p className="my-auto ms-2">Frodo Bolsón</p>
-              </div>
-              <div className="d-flex mb-2">
-                <img
-                  src="../img/pedro.png"
-                  alt="Foto de Pedro"
-                  width="50px"
-                  height="50px"
-                  className="rounded-5"
-                />
-                <p className="my-auto ms-2">Benji Wallace</p>
-              </div>
+              <button
+                className="card-link quote-generator btn btn-outline-dark small"
+                onClick={handleDogButtonClick}
+              >
+                Otro
+              </button>
             </div>
           </div>
         </div>

@@ -19,7 +19,27 @@ const SearchUsers = () => {
         },
       });
       const peopleData = await peopleResponse.json();
-      setPeople(peopleData);
+
+      const peopleWithProfilePictures = await Promise.all(
+        peopleData.map(async (person) => {
+          const userProfileResponse = await fetch(
+            `http://localhost:3001/users/${person.id}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const userProfileData = await userProfileResponse.json();
+          return {
+            ...person,
+            profile_picture: userProfileData.profile_picture,
+          };
+        })
+      );
+
+      setPeople(peopleWithProfilePictures);
 
       const friendsResponse = await fetch("http://localhost:3001/friends", {
         method: "GET",
@@ -88,7 +108,7 @@ const SearchUsers = () => {
               <div className="card mb-4">
                 <div className="card-body d-flex flex-column align-items-center">
                   <img
-                    src={`${process.env.PUBLIC_URL}/img-users/${person.id}.jpg`}
+                    src={person.profile_picture}
                     alt="Person"
                     className="card-img-top rounded-circle img-thumbnail w-25 h-25 mb-3"
                   />

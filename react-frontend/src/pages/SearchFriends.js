@@ -9,17 +9,42 @@ const SearchFriends = () => {
   const [buttonStatuses, setButtonStatuses] = useState([]);
 
   const showData = async () => {
-    const URL = "http://localhost:3001/friends";
-    const response = await fetch(URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "X-User-Id": localStorage.getItem("userId"),
-      },
-    });
-    const data = await response.json();
-    setPeople(data);
-    setButtonStatuses(new Array(data.length).fill("unadded"));
+    try {
+      const friendsResponse = await fetch("http://localhost:3001/friends", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-User-Id": localStorage.getItem("userId"),
+        },
+      });
+      const friendsData = await friendsResponse.json();
+
+      const friendsWithProfilePictures = await Promise.all(
+        friendsData.map(async (friend) => {
+          const userProfileResponse = await fetch(
+            `http://localhost:3001/users/${friend.id}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const userProfileData = await userProfileResponse.json();
+          return {
+            ...friend,
+            profile_picture: userProfileData.profile_picture,
+          };
+        })
+      );
+
+      setPeople(friendsWithProfilePictures);
+      setButtonStatuses(
+        new Array(friendsWithProfilePictures.length).fill("unadded")
+      );
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const results = !search
@@ -71,7 +96,7 @@ const SearchFriends = () => {
               <div className="card mb-4">
                 <div className="card-body d-flex flex-column align-items-center">
                   <img
-                    src={`${process.env.PUBLIC_URL}/img-users/${person.id}.jpg`}
+                    src={person.profile_picture}
                     alt="Person"
                     className="card-img-top rounded-circle img-thumbnail w-25 h-25 mb-3"
                   />

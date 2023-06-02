@@ -1,6 +1,13 @@
 import React from "react";
 
-const PostItem = ({ text, postDate, userName, imageUrl }) => {
+const PostItem = ({
+  text,
+  postDate,
+  userName,
+  imageUrl,
+  numLikes,
+  handleLike,
+}) => {
   return (
     <div className="card mb-4">
       <div className="card-header d-flex align-items-center justify-content-between">
@@ -16,9 +23,15 @@ const PostItem = ({ text, postDate, userName, imageUrl }) => {
         </div>
         <p className="text-end mb-0 small text-muted">{postDate}</p>
       </div>
-      <div className="row card-body">
-        <div id="post" className="">
-          <p className="card-text">{text}</p>
+      <div className="card-body">
+        <p className="card-text">{text}</p>
+        <div className="d-flex justify-content-end align-items-center">
+          <span className="me-1">{numLikes}</span>
+          <i
+            onClick={handleLike}
+            className="bi bi-heart-fill text-danger"
+            style={{ cursor: "pointer" }}
+          ></i>
         </div>
       </div>
     </div>
