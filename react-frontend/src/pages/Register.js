@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
+import { Modal } from "react-bootstrap";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState("");
+  const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -31,15 +33,25 @@ function Register() {
 
       if (response.ok) {
         console.log(data.message);
-        navigate("/");
+        setModal(true);
+        setTimeout(function () {
+          navigate("/");
+        }, 2000);
+        
       } else {
         console.log(data.error);
         setError(data.error);
       }
+    
     } catch (error) {
       console.error(error);
       setError("Error de conexión");
     }
+    
+  };
+  
+  const handleModal = () => {
+    setModal(false);
   };
 
   return (
@@ -118,7 +130,19 @@ function Register() {
           </div>
         </div>
       </div>
+      <Modal show={modal} onHide={handleModal}>
+        <Modal.Header>
+          <Modal.Title>¡Usuario registrado correctamente!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <button className="rounded-pill"
+        style={{ backgroundColor: "palevioletred", color: "white" }} onClick={handleModal}>
+            Cerrar
+          </button>
+        </Modal.Body>
+      </Modal>
     </div>
+    
   );
 }
 
