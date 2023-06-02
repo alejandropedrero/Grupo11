@@ -4,8 +4,8 @@ export default function ProfileData(props) {
   const userId = localStorage.getItem("userId");
   const [isEditable, setIsEditable] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
-  function editButton(e) {
-    e.preventDefault();
+  function editButton(event) {
+    event.preventDefault();
     setIsEditable(true);
     setIsButtonVisible(true);
   }
