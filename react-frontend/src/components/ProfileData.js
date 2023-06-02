@@ -40,7 +40,6 @@ export default function ProfileData(props) {
     }
     setIsEditable(false);
     setIsButtonVisible(false);
-
   };
 
   return (
@@ -250,15 +249,16 @@ export default function ProfileData(props) {
         </ul>
         <div className="card-body">
           <div className="mt-20 d-flex justify-content-between">
-            {props.boton &&
-            <button
-              className="btn-navbar btn rounded-5 btn-general mb-3"
-              style={{ backgroundColor: "#79c7c7" }}
-              type="submit"
-              onClick={editButton}
-            >
-              Editar
-            </button>}
+            {props.boton && (
+              <button
+                className="btn-navbar btn rounded-5 btn-general mb-3"
+                style={{ backgroundColor: "#79c7c7" }}
+                type="submit"
+                onClick={editButton}
+              >
+                Editar
+              </button>
+            )}
             {isButtonVisible && (
               <button
                 onClick={updateProfile}
