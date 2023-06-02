@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavbarAlt from "../components/NavbarAlt";
 import SearchBar from "../components/SearchBar";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 const SearchFriends = () => {
@@ -100,7 +101,12 @@ const SearchFriends = () => {
                     alt="Person"
                     className="card-img-top rounded-circle img-thumbnail w-25 h-25 mb-3"
                   />
-                  <h5 className="card-title">{person.name}</h5>
+                  <Link
+                    to={`/profile-user/${person.id}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <h5 className="card-title">{person.name}</h5>
+                  </Link>
                   <p className="card-text">{person.email}</p>
                   <button
                     className={`btn ${

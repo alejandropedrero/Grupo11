@@ -1,17 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import ModalJobEdu from "./ModalJobEdu";
 
 export default function ProfileJobEdu(props) {
-  const [modalOpen, setModalOpen] = useState(false);
-  function openModalFormJob() {
-    setModalOpen(true);
-    console.log("Hola")
-  }
-  function modalFormEdu() {
-    setModalOpen(true);
-
-  }
 
   return (
     <div
@@ -82,7 +72,6 @@ export default function ProfileJobEdu(props) {
         </div>
         {props.job ? (
           <button
-            onClick={openModalFormJob}
             className="btn-navbar btn btn-general mb-3 col-1 rounded-pill mx-auto me-3"
             style={{ backgroundColor: "#79c7c7" }}
             type="submit"
@@ -91,7 +80,7 @@ export default function ProfileJobEdu(props) {
           </button>
         ) : props.education ? (
           <button
-          onClick={modalFormEdu}
+
             className="btn-navbar btn btn-general mb-3 col-1 rounded-pill mx-auto me-3"
             style={{ backgroundColor: "palevioletred" }}
             type="submit"
@@ -100,8 +89,7 @@ export default function ProfileJobEdu(props) {
           </button>
         ) : (
           ""
-        ) &&
-        <ModalJobEdu isOpen={modalOpen} />
+        )
         
         }
       </div>

@@ -265,3 +265,10 @@
 }
 
 /* Acaba Login y register */
+
+/* Navegación desde nombre hacia profile-user */
+
+.card-title:hover {
+  text-decoration: underline;
+  color: black;
+}
