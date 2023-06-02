@@ -15,27 +15,6 @@ export default function ProfileJobEdu(props) {
     handleClose();
   };
 
-  // const createProfileJob = async () => {
-  //   try {
-  //     const jsonbody = await JSON.stringify();
-  //     console.log(jsonbody);
-  //     const response = await fetch(`http://localhost:3001/users/${userId}`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "X-User-Id": userId,
-  //       },
-  //       body: jsonbody,
-  //     });
-
-  //     if (response.ok) {
-  //       console.log(response.ok);
-  //     } else {
-  //     }
-  //   } catch (error) {
-  //     console.error("Error al actualizar los datos del perfil:", error);
-  //   }
-
   return (
     <>
       <div

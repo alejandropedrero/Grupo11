@@ -50,7 +50,7 @@ export default function ProfileData(props) {
       <div className="card" style={{ width: "90%" }}>
         <div className="d-flex justify-content-center align-items-center">
           <img
-            src={`${process.env.PUBLIC_URL}/img-users/${props.user.id}.jpg`}
+            src={props.user.profile_picture}
             className="card-img-top rounded-circle w-50 mt-4"
             alt="foto perfil"
           />

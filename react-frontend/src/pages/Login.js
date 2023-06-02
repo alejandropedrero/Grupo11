@@ -48,7 +48,6 @@ function LoginForm() {
         <div className="container main-lr">
           <div className="row row-lr">
             <div className="col-md-6 side-image-login">
-              <img src="" alt="" />
             </div>
             <div className="col-md-6 right-lr">
               <div className="input-box-lr">
