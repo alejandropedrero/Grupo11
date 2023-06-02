@@ -47,7 +47,7 @@ export default function NavbarAlt() {
           </a>
 
           <button
-            className="navbar-toggler mb-2"
+            className="navbar-toggler mb-2 navbar-toggler-icon-custom"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"

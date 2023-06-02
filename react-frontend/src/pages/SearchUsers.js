@@ -116,10 +116,8 @@ const SearchUsers = () => {
                     to={`/profile-user/${person.id}`}
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <h5 className="card-title">{person.name}</h5>
+                    <h5 className="card-title mb-3">{person.name}</h5>
                   </Link>
-
-                  <p className="card-text">{person.email}</p>
                   <button
                     className={`btn ${
                       buttonStatuses[index] === "added"
