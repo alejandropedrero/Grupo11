@@ -209,7 +209,7 @@ CREATE TABLE comments (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE TABLE messages (
+CREATE TABLE feedback (
     id INT NOT NULL AUTO_INCREMENT,
     sender_id INT NOT NULL,
     recipient_id INT NOT NULL,

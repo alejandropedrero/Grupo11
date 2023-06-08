@@ -9,6 +9,7 @@ import peopleRoutes from "./routes/people.routes.js";
 import friendRoutes from "./routes/friends.routes.js";
 import postsRoutes from "./routes/posts.routes.js";
 import ticketRoutes from "./routes/ticket.routes.js";
+import feedbackRoutes from "./routes/feedback.routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,6 +30,7 @@ app.use(usersRoutes);
 app.use(peopleRoutes);
 app.use(friendRoutes);
 app.use(ticketRoutes);
+app.use(feedbackRoutes);
 
 app.listen(3001, () => {
   console.log(`Server running on port ${3001}`);
