@@ -4,11 +4,12 @@ import {
   createPost,
   likePost,
 } from "../controllers/posts.controller.js";
+import authenticateToken from "../middleware/authMiddleware.js";
 
 const router = Router();
 
-router.get("/posts", getPosts);
-router.post("/posts", createPost);
-router.post("/posts/:id/like", likePost);
+router.get("/posts", authenticateToken, getPosts);
+router.post("/posts", authenticateToken, createPost);
+router.post("/posts/:id/like", authenticateToken, likePost);
 
 export default router;

@@ -11,11 +11,13 @@ const SearchUsers = () => {
 
   const fetchData = async () => {
     try {
+      const token = localStorage.getItem("token");
       const peopleResponse = await fetch("http://localhost:3001/people", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           "X-User-Id": localStorage.getItem("userId"),
+          Authorization: `Bearer ${token}`,
         },
       });
       const peopleData = await peopleResponse.json();
@@ -28,6 +30,7 @@ const SearchUsers = () => {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
               },
             }
           );
@@ -46,6 +49,7 @@ const SearchUsers = () => {
         headers: {
           "Content-Type": "application/json",
           "X-User-Id": localStorage.getItem("userId"),
+          Authorization: `Bearer ${token}`,
         },
       });
       const friendsData = await friendsResponse.json();
@@ -73,11 +77,13 @@ const SearchUsers = () => {
 
   const handleAddFriend = async (person, index) => {
     try {
+      const token = localStorage.getItem("token");
       const response = await fetch("http://localhost:3001/friends", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "X-User-Id": localStorage.getItem("userId"),
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ name: person.name }),
       });

@@ -3,24 +3,29 @@ import { useForm } from "react-hook-form";
 import { Modal } from "react-bootstrap";
 import NavbarAlt from "../components/NavbarAlt";
 
-
 export default function TicketForm() {
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const [modal, setModal] = useState(false);
 
   const onSubmit = async (data) => {
     console.log(JSON.stringify(data));
 
     try {
+      const token = localStorage.getItem("token");
       const result = await fetch("http://localhost:3001/ticket", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           titulo: data.titulo,
-          consulta: data.consulta
-        })
+          consulta: data.consulta,
+        }),
       });
 
       const resultInJson = await result.json();
@@ -43,7 +48,7 @@ export default function TicketForm() {
         <div className="container col-lg-6 me-6 sm-6 border">
           <div
             className="container p-2 text-white"
-            style={{ backgroundColor: "palevioletred", width: '100%'}}
+            style={{ backgroundColor: "palevioletred", width: "100%" }}
           >
             <div className="col-lg-12">
               <h3>¿Necesitas ayuda?</h3>
@@ -59,7 +64,7 @@ export default function TicketForm() {
               className="form-control"
               placeholder="Sintetiza tu idea"
               {...register("titulo", {
-                required: true
+                required: true,
               })}
             />
             {errors.titulo?.type === "required" && (
@@ -77,7 +82,7 @@ export default function TicketForm() {
               placeholder="Cuéntanos en detalle cuál es la dificultad que te has encontrado"
               style={{ height: "200px" }}
               {...register("consulta", {
-                required: true
+                required: true,
               })}
             />
             {errors.consulta?.type === "required" && (
@@ -101,8 +106,11 @@ export default function TicketForm() {
           <Modal.Title>¡Ticket registrado!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <button className="rounded-pill"
-        style={{ backgroundColor: "palevioletred", color: "white" }} onClick={handleModal}>
+          <button
+            className="rounded-pill"
+            style={{ backgroundColor: "palevioletred", color: "white" }}
+            onClick={handleModal}
+          >
             Cerrar
           </button>
         </Modal.Body>

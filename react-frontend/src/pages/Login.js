@@ -47,8 +47,7 @@ function LoginForm() {
       <div className="wrapper-lr">
         <div className="container main-lr">
           <div className="row row-lr">
-            <div className="col-md-6 side-image-login">
-            </div>
+            <div className="col-md-6 side-image-login"></div>
             <div className="col-md-6 right-lr">
               <div className="input-box-lr">
                 <form onSubmit={handleSubmit}>

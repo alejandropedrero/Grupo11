@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config({ path: path.join(__dirname, "./env/.env") });
+dotenv.config({ path: path.join(__dirname, "../env/.env") });
 
 export const validateLogin = async (req, res) => {
   const { email, password } = req.body;
@@ -33,8 +33,14 @@ export const validateLogin = async (req, res) => {
     const user = { id: rows[0].id, email: rows[0].email };
 
     const token = jwt.sign({ user }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "3h",
     });
+
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    console.log("Token Expiration:", new Date(decodedToken.exp * 1000));
+    console.log("Decoded Token:", decodedToken);
+
+    console.log("JWT Secret:", process.env.JWT_SECRET);
 
     return res.status(200).json({ token, userId: rows[0].id });
   } catch (error) {

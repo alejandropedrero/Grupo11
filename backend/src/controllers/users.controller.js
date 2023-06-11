@@ -31,7 +31,6 @@ export const getCurrentUser = async (req, res) => {
   }
 };
 
-//Function to update user data in the database
 export const updateCurrentUser = async (req, res) => {
   try {
     const userData = req.body; //Para hacer una request solo del json del body
