@@ -1,14 +1,10 @@
 import { pool } from "../db.js";
 import bcrypt from "bcrypt";
-import { fileURLToPath } from "url";
-import path from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export const validateRegister = async (req, res) => {
   try {
     const { email, password, name } = req.body;
+    const profile_picture = "https://i.postimg.cc/fT98Tg8Z/23.png"; // Imagen genérica para nuevos usarios
 
     if (!email || !password || !name) {
       return res
@@ -19,8 +15,8 @@ export const validateRegister = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await pool.query(
-      "INSERT INTO users (email, password, name) VALUES (?, ?, ?)",
-      [email, hashedPassword, name]
+      "INSERT INTO users (email, password, name, profile_picture) VALUES (?, ?, ?, ?)",
+      [email, hashedPassword, name, profile_picture]
     );
 
     return res.status(200).json({ message: "Usuario creado" });

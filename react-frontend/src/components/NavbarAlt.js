@@ -9,11 +9,14 @@ export default function NavbarAlt() {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem("token");
+
     fetch(`http://localhost:3001/users/${userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "X-User-Id": userId,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())

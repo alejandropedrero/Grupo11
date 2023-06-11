@@ -4,11 +4,12 @@ import {
   getCurrentUser,
   updateCurrentUser,
 } from "../controllers/users.controller.js";
+import authenticateToken from "../middleware/authMiddleware.js";
 
 const router = Router();
 
-router.get("/users", getUsers);
-router.get("/users/:id", getCurrentUser); //No lo estamos usando como current
-router.patch("/users/:id", updateCurrentUser);
+router.get("/users", authenticateToken, getUsers);
+router.get("/users/:id", authenticateToken, getCurrentUser); //No lo estamos usando como current
+router.patch("/users/:id", authenticateToken, updateCurrentUser);
 
 export default router;

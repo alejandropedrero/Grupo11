@@ -39,16 +39,20 @@ const Posts = () => {
   const fetchUserData = async () => {
     try {
       const userId = localStorage.getItem("userId");
+      const token = localStorage.getItem("token");
+
       const userResponse = await fetch(
         `http://localhost:3001/users/${userId}`,
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
             "X-User-Id": userId,
           },
         }
       );
+
       const userData = await userResponse.json();
       setUserId(userId);
       setUserProfilePicture(userData.profile_picture);
@@ -59,12 +63,16 @@ const Posts = () => {
 
   const fetchPosts = async () => {
     try {
+      const token = localStorage.getItem("token");
+
       const postsResponse = await fetch("http://localhost:3001/posts", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       });
+
       const postsData = await postsResponse.json();
 
       const formattedPosts = await Promise.all(
@@ -75,6 +83,7 @@ const Posts = () => {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
               },
             }
           );
@@ -124,6 +133,7 @@ const Posts = () => {
 
   const handlePostSubmit = async () => {
     try {
+      const token = localStorage.getItem("token");
       const requestBody = {
         text: postText,
       };
@@ -133,6 +143,7 @@ const Posts = () => {
         headers: {
           "Content-Type": "application/json",
           "X-User-Id": userId,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(requestBody),
       });
@@ -145,6 +156,7 @@ const Posts = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -182,6 +194,7 @@ const Posts = () => {
 
     try {
       const userId = localStorage.getItem("userId");
+      const token = localStorage.getItem("token");
       const response = await fetch(
         `http://localhost:3001/posts/${postId}/like`,
         {
@@ -189,6 +202,7 @@ const Posts = () => {
           headers: {
             "Content-Type": "application/json",
             "X-User-Id": userId,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
