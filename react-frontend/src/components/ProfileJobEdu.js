@@ -1,19 +1,37 @@
 import React from "react";
 import { useState } from "react";
 import { Modal, Form } from "react-bootstrap";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export default function ProfileJobEdu(props) {
   const [showModal, setShowModal] = useState(false);
   const [profesion, setProfesion] = useState("");
   const [empresa, setEmpresa] = useState("");
   const [duracion, setDuracion] = useState("");
-
+  const [isId, setId] = useState(false);
+  const [userId, setUserId] = useState("");
+  const { id } = useParams();
+  const [edu, setEdu] = useState([]);
+  
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
   const handleSubmit = (e) => {
     e.preventDefault();
     handleClose();
   };
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+
+    if (typeof id === "undefined") {
+      //La variable id es undefined, no existe en esa URL
+      setId(true);
+    } else {
+      setId(false);
+    }
+
+  }, []);
 
   return (
     <>
@@ -32,55 +50,37 @@ export default function ProfileJobEdu(props) {
               ? "EDUCACIÓN"
               : ""}
           </h5>
-          <div className="card-body">
-            {props.job && (
-              <div>
-                <h5 className="card-title">{props.user.job_1}</h5>
-                <h6 className="card-text">{props.user.job_1_company}</h6>
-                <p>
-                  {props.user.job_1_start} - {props.user.job_1_end}
-                </p>
-              </div>
+          <div className="card-body mt-3">
+            {Array.isArray(props.jobs) && props.jobs.length > 0 && (
+              <ul className="list-group">
+                {props.jobs.map((job) => (
+                  <li key={job.id}>
+                    <div>
+                      <h5 className="card-title">{job.job}</h5>
+                      <h6 className="card-text">{job.job_company}</h6>
+                      <p>
+                        {job.job_start} - {job.job_end}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             )}
 
-            {props.job && (
-              <div>
-                <h5 className="card-title">{props.user.job_2}</h5>
-                <h6 className="card-text">{props.user.job_2_company}</h6>
-                <p>
-                  {props.user.job_2_start} - {props.user.job_2_end}
-                </p>
-              </div>
-            )}
-
-            {props.job && (
-              <div>
-                <h5 className="card-title">{props.user.job_3}</h5>
-                <h6 className="card-text">{props.user.job_3_company}</h6>
-                <p>
-                  {props.user.job_3_start} - {props.user.job_3_end}
-                </p>
-              </div>
-            )}
-
-            {props.education && (
-              <div>
-                <h5 className="card-title">{props.user.education_1}</h5>
-                <h6 className="card-text">
-                  {props.user.education_1_institution}
-                </h6>
-                <p>{props.user.education_1_end}</p>
-              </div>
-            )}
-
-            {props.education && (
-              <div>
-                <h5 className="card-title">{props.user.education_2}</h5>
-                <h6 className="card-text">
-                  {props.user.education_2_institution}
-                </h6>
-                <p>{props.user.education_2_end}</p>
-              </div>
+            {Array.isArray(props.edu) && props.edu.length > 0 && (
+              <ul className="list-group">
+                {props.edu.map((education) => (
+                  <li key={education.id}>
+                    <div>
+                      <h5 className="card-title">{education.education}</h5>
+                      <h6 className="card-text">
+                        {education.education_institution}
+                      </h6>
+                      <p>{education.education_end}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
           {props.job && props.boton ? (
