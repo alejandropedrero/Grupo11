@@ -12,6 +12,7 @@ export default function ProfileData(props) {
 
   const updateProfile = async () => {
     try {
+      const token = localStorage.getItem("token");
       const jsonbody = await JSON.stringify({
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
@@ -27,6 +28,7 @@ export default function ProfileData(props) {
         headers: {
           "Content-Type": "application/json",
           "X-User-Id": userId,
+          Authorization: `Bearer ${token}`,
         },
         body: jsonbody,
       });

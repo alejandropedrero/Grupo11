@@ -17,11 +17,14 @@ function ProfileUser() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const token = localStorage.getItem("token");
+
         const response = await fetch(`http://localhost:3001/users/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             "X-User-Id": userId,
+            Authorization: `Bearer ${token}`,
           },
         });
         const responseJson = await response.json();
@@ -42,7 +45,7 @@ function ProfileUser() {
           },
         });
         const jobsJson = await response.json();
-        const {results} = jobsJson;
+        const { results } = jobsJson;
         setJobs(results);
       } catch (error) {
         console.error(error);
@@ -60,14 +63,13 @@ function ProfileUser() {
           },
         });
         const educationJson = await response.json();
-        const {results} = educationJson;
+        const { results } = educationJson;
         setEdu(results);
       } catch (error) {
         console.error(error);
       }
     };
     fetchEducation();
-
   }, []);
 
   return (
@@ -90,7 +92,6 @@ function ProfileUser() {
             <FeedbackItem />
           </div>
         </div>
-   
       </div>
     </div>
   );

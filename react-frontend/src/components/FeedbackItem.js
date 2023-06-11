@@ -3,51 +3,52 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const FeedbackItem = () => {
+  const [printerFeedback, setPrinterFeedback] = useState(false);
+  const [userId, setUserId] = useState("");
+  const [userProfilePicture, setUserProfilePicture] = useState("");
 
-const [printerFeedback, setPrinterFeedback] = useState(false)
-const [userId, setUserId] = useState("");
-const [userProfilePicture, setUserProfilePicture] = useState("");
+  const formatDate = (dateString) => {
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true,
+    };
 
-const formatDate = (dateString) => {
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: true,
+    const postDate = new Date(dateString);
+    return postDate.toLocaleString("es-ES", options);
   };
 
-  const postDate = new Date(dateString);
-  return postDate.toLocaleString("es-ES", options);
-};
+  useEffect(() => {
+    fetchFeedbackData();
+    fetchFeedback();
+  }, []);
 
-useEffect(() => {
-  fetchFeedbackData();
-  fetchFeedback();
-}, []);
-
-const fetchFeedbackData = async () => {
-  try {
-    const userId = localStorage.getItem("userId");
-    const userResponse = await fetch(
-      `http://localhost:3001/users/${userId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-User-Id": userId,
-        },
-      }
-    );
-    const userData = await userResponse.json();
-    setUserId(userId);
-    setUserProfilePicture(userData.profile_picture);
-  } catch (error) {
-    console.error("Error fetching user data:", error);
-  }
-};
+  const fetchFeedbackData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
+      const userResponse = await fetch(
+        `http://localhost:3001/users/${userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-User-Id": userId,
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const userData = await userResponse.json();
+      setUserId(userId);
+      setUserProfilePicture(userData.profile_picture);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
 
   const fetchFeedback = async () => {
     try {
@@ -57,7 +58,7 @@ const fetchFeedbackData = async () => {
           "Content-Type": "application/json",
         },
       });
-     const responseJSON = await feedbackResponse.body
+      const responseJSON = await feedbackResponse.body;
     } catch (error) {
       console.error("Error fetching feedback:", error);
     }

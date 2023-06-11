@@ -11,9 +11,8 @@ function Profile() {
   const [user, setUser] = useState([]);
   const { id } = useParams();
   const [isId, setId] = useState(false);
-   const [edu, setEdu] = useState([]);
+  const [edu, setEdu] = useState([]);
   const [jobs, setJobs] = useState([]);
-
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -29,12 +28,15 @@ function Profile() {
 
     const fetchData = async () => {
       try {
+        const token = localStorage.getItem("token");
+
         setUserId(userId);
         const response = await fetch(`http://localhost:3001/users/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             "X-User-Id": userId,
+            Authorization: `Bearer ${token}`,
           },
         });
         const responseJson = await response.json();
@@ -55,7 +57,7 @@ function Profile() {
           },
         });
         const jobsJson = await response.json();
-        const {results} = jobsJson;
+        const { results } = jobsJson;
         setJobs(results);
       } catch (error) {
         console.error(error);
@@ -73,17 +75,14 @@ function Profile() {
           },
         });
         const educationJson = await response.json();
-        const {results} = educationJson;
+        const { results } = educationJson;
         setEdu(results);
       } catch (error) {
         console.error(error);
       }
     };
     fetchEducation();
-
-
   }, []);
-
 
   return (
     <>
@@ -103,7 +102,7 @@ function Profile() {
           <ProfileLangCertHobb user={user} hobb={true} />
 
           <div className="col bg-light p-3">
-            <FeedbackItem/>
+            <FeedbackItem />
           </div>
         </div>
       </div>
