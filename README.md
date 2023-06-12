@@ -12,7 +12,7 @@
 - ***Middleware de seguridad***: implementación en **backend/src/middleware**. Protección de todas las rutas siendo necesario tener un token válido para realizar peticiones de cualquier tipo.
 - ***Tests***: en **backend/src/tests**. Programamos varios test para comprobar distintas funcionalidades de las rutas. Para ejecutarlos, desde grupo11/backend escribir `npx mocha src/tests`.
 - ***Perfil editable***: división de la tabla original users en **users**, **jobs** y **education** para que sea posible agregar tanto las profesiones como los estudios que el usuario desee. También se pueden añadir dos certificaciones, dos idiomas y dos hobbies.
-- ***Feedback en perfil***(solo parcialmente): se envía el mensaje a la base de datos, pero no hemos conseguimos que el feedback enviado apareciera en esa vista de los perfiles.
+- ***Feedback en perfil*** (solo parcialmente): se envía el mensaje a la base de datos, pero no hemos conseguimos que el feedback enviado apareciera en esa vista de los perfiles.
 
 ## No conseguidos
 - ***En Posts.js***: que al usuario logueado sólo le aparezcan los posteos de sus amigos. Formamos un código demasiado complejo que hacía que al intentar modificar algo en Posts se rompiera todo.
