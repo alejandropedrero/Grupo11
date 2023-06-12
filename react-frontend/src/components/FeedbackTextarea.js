@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { Modal } from "react-bootstrap";
 
 const FeedbackTextarea = () => {
   const { id } = useParams();
-  const [feedback, setFeedback] = useState("");
-  const [feedbackText, setFeedbackText] = useState("");
+  const [modal, setModal] = useState(false);
+
+  const handleModal = () => {
+    setModal(false);
+  };
 
   const handleSubmit = async () => {
     try {
@@ -26,6 +30,8 @@ const FeedbackTextarea = () => {
           body: JSON.stringify(requestBody),
         }
       );
+        setModal(true);
+  
       console.log(postFeedbackResponse);
     } catch (error) {
       console.error("Error creating feedback:", error);
@@ -60,7 +66,22 @@ const FeedbackTextarea = () => {
           </button>
         </div>
       </div>
+      <Modal show={modal} onHide={handleModal}>
+        <Modal.Header>
+          <Modal.Title>¡Enviado a base de datos!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <button
+            className="rounded-pill"
+            style={{ backgroundColor: "palevioletred", color: "white" }}
+            onClick={handleModal}
+          >
+            Cerrar
+          </button>
+        </Modal.Body>
+      </Modal>
     </div>
+
   );
 };
 
