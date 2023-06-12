@@ -12,6 +12,7 @@ const FeedbackTextarea = () => {
         text: document.getElementById("feedbackTextarea").value,
         recipient_id: id,
       };
+      const token = localStorage.getItem("token");
       const userId = localStorage.getItem("userId");
       const postFeedbackResponse = await fetch(
         "http://localhost:3001/feedback",
@@ -20,6 +21,7 @@ const FeedbackTextarea = () => {
           headers: {
             "Content-Type": "application/json",
             "X-User-Id": userId,
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(requestBody),
         }

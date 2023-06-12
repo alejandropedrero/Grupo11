@@ -15,7 +15,6 @@ function ProfileUser() {
   const [isId, setId] = useState(true);
 
   useEffect(() => {
-
     if (typeof id != "undefined") {
       setId(false);
     }
@@ -42,11 +41,13 @@ function ProfileUser() {
 
     const fetchJob = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await fetch(`http://localhost:3001/jobs/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             "X-User-Id": userId,
+            Authorization: `Bearer ${token}`,
           },
         });
         const jobsJson = await response.json();
@@ -60,11 +61,13 @@ function ProfileUser() {
 
     const fetchEducation = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await fetch(`http://localhost:3001/education/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             "X-User-Id": userId,
+            Authorization: `Bearer ${token}`,
           },
         });
         const educationJson = await response.json();
@@ -83,10 +86,10 @@ function ProfileUser() {
       <div className="container lg-12 d-flex flex-column flex-md-row justify-content-around">
         <div className="col-lg-5 rounded-3 text-bg-light">
           <ProfileData user={user} />
-          <ProfileJobEdu jobs={jobs} botonJob={isId} tituloJob={true}/>
+          <ProfileJobEdu jobs={jobs} botonJob={isId} tituloJob={true} />
         </div>
         <div className="col-lg-5 rounded-3 text-bg-light">
-          <ProfileJobEdu edu={edu}  botonEdu={isId} tituloEdu={true}/>
+          <ProfileJobEdu edu={edu} botonEdu={isId} tituloEdu={true} />
           <ProfileLangCertHobb user={user} cert={true} />
           <ProfileLangCertHobb user={user} lang={true} />
           <ProfileLangCertHobb user={user} hobb={true} />

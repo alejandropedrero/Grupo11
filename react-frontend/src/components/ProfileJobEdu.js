@@ -39,6 +39,7 @@ export default function ProfileJobEdu(props) {
 
   const addJob = async () => {
     try {
+      const token = localStorage.getItem("token");
       const userId = localStorage.getItem("userId");
       setUserId(userId);
       const jsonbody = await JSON.stringify({
@@ -52,6 +53,7 @@ export default function ProfileJobEdu(props) {
         headers: {
           "Content-Type": "application/json",
           "X-User-Id": userId,
+          Authorization: `Bearer ${token}`,
         },
         body: jsonbody,
       });
@@ -67,6 +69,7 @@ export default function ProfileJobEdu(props) {
 
   const addEducation = async () => {
     try {
+      const token = localStorage.getItem("token");
       const userId = localStorage.getItem("userId");
       setUserId(userId);
       const jsonbody = await JSON.stringify({
@@ -82,6 +85,7 @@ export default function ProfileJobEdu(props) {
           headers: {
             "Content-Type": "application/json",
             "X-User-Id": userId,
+            Authorization: `Bearer ${token}`,
           },
           body: jsonbody,
         }
@@ -95,8 +99,6 @@ export default function ProfileJobEdu(props) {
       console.error("Error al actualizar los datos de los estudios:", error);
     }
   };
-
-
 
   return (
     <>
@@ -119,7 +121,7 @@ export default function ProfileJobEdu(props) {
             {Array.isArray(props.jobs) && props.jobs.length > 0 && (
               <ul className="list-group">
                 {props.jobs.map((job) => (
-                  <div key={job.id}  >
+                  <div key={job.id}>
                     <h5 className="card-title">{job.job}</h5>
                     <h6 className="card-text">{job.job_company}</h6>
                     <p>
@@ -127,7 +129,6 @@ export default function ProfileJobEdu(props) {
                     </p>
                   </div>
                 ))}
-                
               </ul>
             )}
 
