@@ -22,7 +22,6 @@ export default function ProfileData(props) {
         linkedin: document.getElementById("linkedin").value,
         time_availability: document.getElementById("time_availability").value,
       });
-      console.log(jsonbody);
       const response = await fetch(`http://localhost:3001/users/${userId}`, {
         method: "PATCH",
         headers: {

@@ -4,15 +4,14 @@ import ProfileData from "../components/ProfileData";
 import ProfileJobEdu from "../components/ProfileJobEdu";
 import ProfileLangCertHobb from "../components/ProfileLangCertHobb";
 import { useParams } from "react-router-dom";
-import FeedbackItem from "../components/FeedbackItem";
 
 function Profile() {
+  const { id } = useParams();
   const [userId, setUserId] = useState("");
   const [user, setUser] = useState([]);
-  const { id } = useParams();
-  const [isId, setId] = useState(false);
   const [edu, setEdu] = useState([]);
   const [jobs, setJobs] = useState([]);
+  const [isId, setId] = useState(false);
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -20,8 +19,6 @@ function Profile() {
     if (typeof id === "undefined") {
       //La variable id es undefined, no existe en esa URL
       setId(true);
-      setEdu([]);
-      setJobs([]);
     } else {
       setId(false);
     }
@@ -29,8 +26,6 @@ function Profile() {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-
-        setUserId(userId);
         const response = await fetch(`http://localhost:3001/users/${userId}`, {
           method: "GET",
           headers: {
@@ -49,7 +44,8 @@ function Profile() {
 
     const fetchJob = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/jobs/${id}`, {
+        setUserId(userId);
+        const response = await fetch(`http://localhost:3001/jobs/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -67,7 +63,8 @@ function Profile() {
 
     const fetchEducation = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/education/${id}`, {
+        setUserId(userId);
+        const response = await fetch(`http://localhost:3001/education/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -85,28 +82,21 @@ function Profile() {
   }, []);
 
   return (
-    <>
+    <div>
       <NavbarAlt />
       <div className="container lg-12 d-flex flex-column flex-md-row justify-content-around">
         <div className="col-lg-5 rounded-3 text-bg-light">
-          <ProfileData user={user} boton={isId} />
-          <ProfileJobEdu jobs={jobs} boton={isId} />
+          <ProfileData user={user} boton={isId}/>
+          <ProfileJobEdu jobs={jobs} botonJob={isId} tituloJob={true}/>
         </div>
         <div className="col-lg-5 rounded-3 text-bg-light">
-          <ProfileJobEdu edu={edu} boton={isId} />
-
-          <ProfileLangCertHobb user={user} cert={true} />
-
-          <ProfileLangCertHobb user={user} lang={true} />
-
-          <ProfileLangCertHobb user={user} hobb={true} />
-
-          <div className="col bg-light p-3">
-            <FeedbackItem />
-          </div>
+          <ProfileJobEdu edu={edu} botonEdu={isId} tituloEdu={true}/>
+          <ProfileLangCertHobb user={user} cert={true} boton={isId} />
+          <ProfileLangCertHobb user={user} lang={true} boton={isId}/>
+          <ProfileLangCertHobb user={user} hobb={true} boton={isId} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

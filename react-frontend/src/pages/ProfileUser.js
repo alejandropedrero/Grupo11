@@ -5,7 +5,6 @@ import ProfileData from "../components/ProfileData";
 import ProfileJobEdu from "../components/ProfileJobEdu";
 import ProfileLangCertHobb from "../components/ProfileLangCertHobb";
 import FeedbackTextarea from "../components/FeedbackTextarea";
-import FeedbackItem from "../components/FeedbackItem";
 
 function ProfileUser() {
   const { id } = useParams();
@@ -13,8 +12,14 @@ function ProfileUser() {
   const [user, setUser] = useState({ feedback: [] });
   const [edu, setEdu] = useState([]);
   const [jobs, setJobs] = useState([]);
+  const [isId, setId] = useState(true);
 
   useEffect(() => {
+
+    if (typeof id != "undefined") {
+      setId(false);
+    }
+
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -78,18 +83,15 @@ function ProfileUser() {
       <div className="container lg-12 d-flex flex-column flex-md-row justify-content-around">
         <div className="col-lg-5 rounded-3 text-bg-light">
           <ProfileData user={user} />
-          <ProfileJobEdu jobs={jobs} />
+          <ProfileJobEdu jobs={jobs} botonJob={isId} tituloJob={true}/>
         </div>
         <div className="col-lg-5 rounded-3 text-bg-light">
-          <ProfileJobEdu edu={edu} />
+          <ProfileJobEdu edu={edu}  botonEdu={isId} tituloEdu={true}/>
           <ProfileLangCertHobb user={user} cert={true} />
           <ProfileLangCertHobb user={user} lang={true} />
           <ProfileLangCertHobb user={user} hobb={true} />
           <div className="col bg-light p-3">
             <FeedbackTextarea />
-          </div>
-          <div className="col bg-light p-3">
-            <FeedbackItem />
           </div>
         </div>
       </div>

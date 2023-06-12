@@ -63,3 +63,75 @@ export const updateCurrentUser = async (req, res) => {
       .json({ error: "Error occurred while updating the profile." });
   }
 };
+
+
+export const updateLang = async (req, res) => {
+  try {
+    const userData = req.body;
+    console.log(req.body);
+    const userId = req.params.id;
+    const [rows] = await pool.query(
+      "UPDATE users SET lang_1 = '" +
+        userData.lang_1 +
+        "', lang_2 = '" +
+        userData.lang_2 +
+        "' WHERE id = " +
+        userId +
+        ""
+    );
+    res.status(200).json(rows[0]);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "Error occurred while updating the profile." });
+  }
+};
+
+export const updateCert = async (req, res) => {
+  try {
+    const userData = req.body;
+    console.log(req.body);
+    const userId = req.params.id;
+    const [rows] = await pool.query(
+      "UPDATE users SET cert_1 = '" +
+        userData.cert_1 +
+        "', cert_2 = '" +
+        userData.cert_2 +
+        "' WHERE id = " +
+        userId +
+        ""
+    );
+    res.status(200).json(rows[0]);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "Error occurred while updating the profile." });
+  }
+};
+
+
+export const updateHobb = async (req, res) => {
+  try {
+    const userData = req.body;
+    console.log(req.body);
+    const userId = req.params.id;
+    const [rows] = await pool.query(
+      "UPDATE users SET hobby_1 = '" +
+        userData.hobby_1 +
+        "', hobby_2 = '" +
+        userData.hobby_2 +
+        "' WHERE id = " +
+        userId +
+        ""
+    );
+    res.status(200).json(rows[0]);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "Error occurred while updating the profile." });
+  }
+};
+

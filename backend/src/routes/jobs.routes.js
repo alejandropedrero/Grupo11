@@ -1,12 +1,12 @@
 import { Router } from "express";
 import {
   getJobs,
-  updateJobs,
+  addJob,
 } from "../controllers/jobs.controller.js";
 
 const router = Router();
 
 router.get("/jobs/:id", getJobs);
-router.patch("/jobs/:id", updateJobs);
+router.put("/jobs/:id", addJob);
 
 export default router;

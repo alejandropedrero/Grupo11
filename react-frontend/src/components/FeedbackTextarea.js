@@ -8,10 +8,9 @@ const FeedbackTextarea = () => {
 
   const handleSubmit = async () => {
     try {
-    
       const requestBody = {
         text: document.getElementById("feedbackTextarea").value,
-        recipient_id: id
+        recipient_id: id,
       };
       const userId = localStorage.getItem("userId");
       const postFeedbackResponse = await fetch(

@@ -24,22 +24,13 @@ export const getEducation = async (req, res) => {
   };
   
   //Function to update education data in the database
-  export const updateEducation = async (req, res) => {
+  export const addEducation = async (req, res) => {
     try {
       const educationData = req.body; //Para hacer una request solo del json del body
       console.log(req.body);
       const userId = req.params.id;
-      const [rows] = await pool.query(
-        "UPDATE education SET education = '" +
-        educationData.education +
-          "', education_institution = '" +
-          educationData.education_institution +
-          "', education_end = '" +
-          educationData.education_end +
-          "' WHERE id = " +
-          userId +
-          ""
-      );
+      const query = "INSERT INTO education (user_id, education, education_institution, education_end) VALUES (?, ?, ?, ?)";
+      const [rows] = await pool.query(query, [userId,  educationData.education, educationData.education_institution, educationData.education_end]);
       res.status(200).json(rows[0]);
     } catch (error) {
       console.error(error);
