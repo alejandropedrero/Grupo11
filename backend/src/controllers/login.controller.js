@@ -36,12 +36,6 @@ export const validateLogin = async (req, res) => {
       expiresIn: "3h",
     });
 
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    console.log("Token Expiration:", new Date(decodedToken.exp * 1000));
-    console.log("Decoded Token:", decodedToken);
-
-    console.log("JWT Secret:", process.env.JWT_SECRET);
-
     return res.status(200).json({ token, userId: rows[0].id });
   } catch (error) {
     console.error(error);
